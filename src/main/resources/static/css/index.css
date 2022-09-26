@@ -27,5 +27,5 @@ div h2{font-size: 2em;}
 .survey form .nextBtn:hover{border-radius: 10px; font-size: 1.7em; color: var(--color-aliceBlue); font-weight: 600;}
 .survey form input[type="submit"]:hover{border-radius: 10px; font-size: 1.7em; color: var(--color-aliceBlue); font-weight: 600;}
 .survey form input[type="submit"]{display: none;}
-/* overflow 활용해서 넘겨지는 방식으로 변경해보기 */
+/* overflow 활용해서 넘겨지는 방식으로 변경해보기 ***/
 
