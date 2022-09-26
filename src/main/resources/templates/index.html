@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>firstPage</title>
+    <link rel="stylesheet" href="../static/css/index.css?after">
+    <script src="../static/js/index.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <h1>나들이의 새로운 패러다임</h1>
+        <h2>Route_planner는 나들이 일정을 대신 세워주는 AI입니다.</h2>
+        <h2>Route_planner와 함께 Comport한 나들이를 꿈꿔보세요.</h2>
+        <h2>당신이 어떤 것을 좋아하는지 알려주세요!</h2>
+        <h2>사전 기호조사를 통해 당신이 좋아하는 걸 추천할게요!</h2>
+        <h2>키워드로 간단하게 검색하세요!</h2>
+        <h2>다른 결과도 보고싶으시다면 짧은 키워드를 이용해보세요!</h2>
+        <div class="survey">
+            <button onclick="setVisible()">당신의 취향을 알려주세요!</button>
+            <form action="/header.html" method="get">
+                <p>응해주셔서 감사해요^^ 짧게 여쭤볼게요!</p>
+                <div class="paneWrap">
+                    <div class="d1 pane">첫번째 질문이에요.</div><div class="d2 pane">두번째 질문이에요.</div><div class="d3 pane">마지막 질문이에요.</div><div class="d3 pane">감사합니다~!</div>
+                </div>
+                <button class="beforeBtn" onclick="beforeSlide()">이전</button>
+                <button class="nextBtn" onclick="nextSlide()">다음</button>
+                <input class="submit" type="submit" value="제출">
+            </form>
+            <button onclick="pageGo()">dkdkdk</button>
+        </div>
+    </div>
+</body>
+</html>
