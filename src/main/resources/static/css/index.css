@@ -1,31 +1,33 @@
-@import './public.css';
+@import 'public.css';
 /* @import './reset.css'; */
 
 *{margin: 0; padding: 0; font-family: 'HGGGothicssi_40';}
-body{background-color: var(--color-mainOrange); overflow-y: hidden;}
+body{background-color: var(--color-mainOrange);}
 
-div.wrap{width: 1000px; height: 100%; margin: 0 auto; text-align: center; position: relative;}
+.container{width: 100%; position: relative;}
 
-div h1, h2{color:var(--color-aliceBlue); margin-bottom: 50px;}
-div h1{font-size: 4em; padding-top: 50px;}
-div h2{font-size: 2em;}
+.container > div.logo{width:100%; height: 100px; position: fixed; background-color: black; opacity: 0.5;} 
+.logo > img{ display: inline-block;  width: 100px; height: 100px;}
+
+.container > .dot{color: var(--color-aliceBlue); position: fixed; right: 1%;}
+.container > .d1{top: 47vh}
+.container > .d2{top: 50vh}
+.container > .d3{top: 53vh}
 
 
-.survey{width: 1000px; height: 800px; /* position: relative; */ }
-.survey > button{background-color: var(--color-darkOrange); font-size: 2em; color:var(--color-aliceBlue); border-radius: 50px; border: none;width: 400px; height: 80px;}
-.survey form{overflow: hidden; position: relative; background-color: var(--color-darkOrange); width: 100%; height: 100%; margin: 0 auto; visibility: hidden; position: absolute; top: 100%; border-radius: 100px;}
-.survey form p{color: var(--color-aliceBlue); font-size: 2em; padding-top: 50px;}
-.survey form .paneWrap{position: absolute; left:0; top: 130px; width: 4000px; height:40%;}
-.survey form .paneWrap div{display: inline-block; font-size: 2em; color: var(--color-aliceBlue); width: 1000px; height: 100%; background-color: var(--color-darkOrange);}
-.survey form div.d1{}
-.survey form div.d2{}
-.survey form div.d3{}
-.survey form button, input[type="submit"]{transition: 0.5s; position: absolute; border-radius: 20px; background-color: var(--color-mainOrange); width: 100px; height: 40px; font-size: 1.5em; border: none; }
-.survey form .nextBtn, input[type="submit"]{left: 550px; top: 52%;}
-.survey form .beforeBtn{left: 350px; top: 52%;}
-.survey form .beforeBtn:hover{border-radius: 10px; font-size: 1.7em; color: var(--color-aliceBlue); font-weight: 600;}
-.survey form .nextBtn:hover{border-radius: 10px; font-size: 1.7em; color: var(--color-aliceBlue); font-weight: 600;}
-.survey form input[type="submit"]:hover{border-radius: 10px; font-size: 1.7em; color: var(--color-aliceBlue); font-weight: 600;}
-.survey form input[type="submit"]{display: none;}
-/* overflow 활용해서 넘겨지는 방식으로 변경해보기 ***/
+.container .subcon{width: 75%; margin: 0 auto;}
+section{width: 100%; height: 100vh; color: var(--color-aliceBlue);}
+section .text, .img{margin: 20% 0 0 0}
+section div.text{width: 50%; text-align: center; padding: 7% 0 0 0;}
+section div.t1{font-size: 2em; }
+section div.t2{font-size: 2em;}
+section div.t3{font-size: 2em;}
+section div.img{width: 50%; height: 50vh;}
+.i1{object-fit: cover;}
+section .i1{background-image: url('../img/basicPage1.png'); background-size: contain; background-repeat: no-repeat;} 
+section .i2{background-image: url('../img/basicPage2.png'); background-size: contain; background-repeat: no-repeat;}
+section .i3{background-image: url('../img/basicPage3.png'); background-size: contain; background-repeat: no-repeat; }
+section:nth-of-type(1){display: flex;}
+section:nth-of-type(2){display: flex;}
+section:nth-of-type(3){display: flex;}
 

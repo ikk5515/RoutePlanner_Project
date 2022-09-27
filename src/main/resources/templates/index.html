@@ -9,26 +9,36 @@
     <script src="js/index.js"></script>
 </head>
 <body>
-    <div class="wrap">
-        <h1>나들이의 새로운 패러다임</h1>
-        <h2>Route_planner는 나들이 일정을 대신 세워주는 AI입니다.</h2>
-        <h2>Route_planner와 함께 Comport한 나들이를 꿈꿔보세요.</h2>
-        <h2>당신이 어떤 것을 좋아하는지 알려주세요!</h2>
-        <h2>사전 기호조사를 통해 당신이 좋아하는 걸 추천할게요!</h2>
-        <h2>키워드로 간단하게 검색하세요!</h2>
-        <h2>다른 결과도 보고싶으시다면 짧은 키워드를 이용해보세요!</h2>
-        <div class="survey">
-            <button onclick="setVisible()">당신의 취향을 알려주세요!</button>
-            <form action="/header.html" method="get">
-                <p>응해주셔서 감사해요^^ 짧게 여쭤볼게요!</p>
-                <div class="paneWrap">
-                    <div class="d1 pane">첫번째 질문이에요.</div><div class="d2 pane">두번째 질문이에요.</div><div class="d3 pane">마지막 질문이에요.</div><div class="d3 pane">감사합니다~!</div>
+    <div class="container">
+        <div class="logo"><img src="img/Logo.png" alt=""></div>
+        <div class="dot d1">●</div>
+        <div class="dot d2">●</div>
+        <div class="dot d3">●</div>
+        <div class="subcon">
+            <section>
+                <div class="text t1">
+                    <h2>나들이의 새로운 패러다임</h2>
+                    <br>
+                    <p>Route_planner와 함꼐 Comfort한 나들이를 꿈꾸세요.</p>
                 </div>
-                <button class="beforeBtn" onclick="beforeSlide()">이전</button>
-                <button class="nextBtn" onclick="nextSlide()">다음</button>
-                <input class="submit" type="submit" value="제출">
-            </form>
-            <button onclick="pageGo()">dkdkdk</button>
+                <div class="img i1"></div>
+            </section>
+            <section>
+                <div class="img i2"></div>
+                <div class="text t2">
+                    <h2>당신이 궁금해요. : 사전설문조사</h2>
+                    <br>
+                    <p>사전 기호조사를 통해 당신의 취향을 알려주세요.</p>
+                </div>
+            </section>
+            <section>
+                <div class="text t3">
+                    <h2>손쉬운 사용 : 키워드</h2>
+                    <br>
+                    <p>간단한 키워드를 이용하여 </p><p>당신의 나들이 일정을 세워드릴게요.</p>
+                </div>
+                <div class="img i3"></div>
+            </section>
         </div>
     </div>
 </body>

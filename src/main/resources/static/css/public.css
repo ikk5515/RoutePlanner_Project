@@ -1,17 +1,17 @@
 /*font------------------------------------------*/
 @font-face {
     font-family: 'HGGGothicssi_60';
-    src: url(../font/HGGGothicssi_60g.ttf);
+    src: url(font/HGGGothicssi_60g.ttf);
 }
 
 @font-face{
     font-family: 'HGGGothicssi_40';
-    src: url(../font/HGGGothicssi_40g.ttf);
+    src: url(font/HGGGothicssi_40g.ttf);
 }
 
 @font-face {
     font-family: 'HGGGothicssi_20';
-    src: url(../font/HGGGothicssi_20g.ttf);
+    src: url(font/HGGGothicssi_20g.ttf);
 }
 
 
