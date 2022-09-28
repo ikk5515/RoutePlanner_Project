@@ -1,24 +1,24 @@
-/*font------------------------------------------*/
 @font-face {
     font-family: 'HGGGothicssi_60';
-    src: url(font/HGGGothicssi_60g.ttf);
+    src: url(font/HGGGothicssi_60g.woff);
 }
 
 @font-face{
     font-family: 'HGGGothicssi_40';
-    src: url(font/HGGGothicssi_40g.ttf);
+    src: url(font/HGGGothicssi_40g.woff);
 }
 
 @font-face {
     font-family: 'HGGGothicssi_20';
-    src: url(font/HGGGothicssi_20g.ttf);
+    src: url(font/HGGGothicssi_20g.woff);
 }
+ㄴ
 
 
 
-/*magorColor-------------------------------------*/
 :root{
     --color-mainOrange: #F29F05;
     --color-darkOrange: #805300;
     --color-aliceBlue: #f0f8ff;
 }
+
