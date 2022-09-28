@@ -1,3 +1,4 @@
-$(document).ready(function(){
-    console.log("dkdkdkdk");
+$getScript('js/jquery.js');
+$(function(){
+    console.log('아아아');
 })
