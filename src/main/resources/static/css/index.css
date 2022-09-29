@@ -1,4 +1,4 @@
-@import 'public.css';
+@import 'css/public.css';
 
 *{margin: 0; padding: 0; font-family: 'HGGGothicssi_40';}
 body{background-color: var(--color-mainOrange);}
