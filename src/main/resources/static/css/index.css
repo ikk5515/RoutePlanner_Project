@@ -16,11 +16,12 @@ body{background-color: var(--color-mainOrange);}
 
 .container .subcon{width: 75%; margin: 0 auto;}
 section{width: 100%; height: 100vh; color: var(--color-aliceBlue);}
-section .text, .img{margin: 20% 0 0 0}
-section div.text{width: 50%; text-align: center; padding: 7% 0 0 0;}
-section div.t1{font-size: 2em; }
-section div.t2{font-size: 2em;}
-section div.t3{font-size: 2em;}
+section{opacity: 0;}
+section .text, .img{margin: 20% 0 0 0;}
+section div.text{width: 50%; text-align: center; padding: 7% 0 0 0; font-size: 2em;}
+section div.t1{}
+section div.t2{}
+section div.t3{}
 section div.img{width: 50%; height: 50vh;}
 .i1{object-fit: cover;}
 section .i1{background-image: url('../img/basicPage1.png'); background-size: contain; background-repeat: no-repeat;} 
