@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>firstPage</title>
-    <link rel="stylesheet" href="css/index.css?after">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="js/index.js"></script>
 </head>
 <body>
@@ -41,5 +42,26 @@
             </section>
         </div>
     </div>
+<script>
+    $(function () {
+        $(window).ready(function(){
+            $('section:nth-of-type(1)').animate({opacity: '1'}, 1000);
+        })
+
+        //scrollEvent
+        var $cheight = $('section:nth-of-type(1)').height();
+        var $startPoint = $cheight / 2;
+        var $cheightTwo = ($cheight*2)-$startPoint;
+        $(window).scroll(function () {
+            var $st = $(window).scrollTop();
+            if($st >= $startPoint){
+                $('section:nth-of-type(2)').animate({opacity: '1'}, 1500);
+            }
+            if($st >= $cheightTwo){
+                $('section:nth-of-type(3)').animate({opacity: '1'}, 1500);
+            }
+        })
+    })
+</script>
 </body>
 </html>
