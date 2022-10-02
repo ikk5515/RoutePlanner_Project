@@ -1,8 +1,11 @@
 package RoutePlanner.core.user;
 
+import lombok.Data;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+@Data
 public class UserDto {
 
     @NotBlank(message = "아이디를 입력해 주세요.")
