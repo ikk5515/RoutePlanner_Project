@@ -6,20 +6,20 @@ import javax.validation.constraints.Pattern;
 public class UserDto {
 
     @NotBlank(message = "아이디를 입력해 주세요.")
-    @Pattern(regexp = "/^[a-z]+[a-z0-9]{5,19}$/g", message = "6~20자의 영문, 숫자만 사용 가능합니다.")
+    @Pattern(regexp = "^(?=.*[a-z0-9])[a-z0-9]{6,20}$", message = "6~20자의 영문, 숫자만 사용 가능")
     private String userID;
 
-    @NotBlank(message = "비가밀번호를 입력해 주세요.")
-    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&])[A-Za-z[0-9]$@$!%*#?&]{8,16}$", message = "8~16자리 영문 대소문자, 숫자, 특수문자 중 3가지 이상 조합을 사용하세요.")
+    @NotBlank(message = "비밀번호를 입력해 주세요.")
+    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&])[A-Za-z[0-9]$@$!%*#?&]{8,16}$", message = "8~16자리 영문 대소문자, 숫자, 특수문자 중 3가지 이상 조합을 사용 가능.")
     private String userPassword;
 
     @NotBlank(message = "비밀번호를 입력해 주세요.")
-    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&])[A-Za-z[0-9]$@$!%*#?&]{8,16}$", message = "8~16자리 영문 대소문자, 숫자, 특수문자 중 3가지 이상 조합을 사용하세요.")
+    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&])[A-Za-z[0-9]$@$!%*#?&]{8,16}$", message = "8~16자리 영문 대소문자, 숫자, 특수문자 중 3가지 이상 조합을 사용 가능")
     private String userPasswordCheck;
 
 
-    @NotBlank(message = "이름을 입력해 주세요.")
-    @Pattern(regexp = "/[가-힣]/", message = "한글만 입력해주세요.")
+    @NotBlank(message = "닉네임을 입력해 주세요.")
+    @Pattern(regexp = "^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,16}$", message = "2~16자의 영문, 한글, 숫자만 사용 가능")
     private String userName;
 
     private String userGender;
