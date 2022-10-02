@@ -7,7 +7,6 @@ import javax.validation.constraints.Pattern;
 
 @Data
 public class UserDto {
-
     @NotBlank(message = "아이디를 입력해 주세요.")
     @Pattern(regexp = "^(?=.*[a-z0-9])[a-z0-9]{6,20}$", message = "6~20자의 영문, 숫자만 사용 가능")
     private String userID;
