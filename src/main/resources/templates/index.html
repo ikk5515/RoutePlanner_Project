@@ -41,27 +41,91 @@
                 <div class="img i3"></div>
             </section>
         </div>
+        <button>
+            <a href="./header.html"></a>
+        </button>
     </div>
+</body>
+</html>
+
+
+<!-- jQuery -->
 <script>
     $(function () {
         $(window).ready(function(){
             $('section:nth-of-type(1)').animate({opacity: '1'}, 1000);
+            $('.container .d1').css('color', 'var(--color-darkOrange)');
         })
 
         //scrollEvent
-        var $cheight = $('section:nth-of-type(1)').height();
-        var $startPoint = $cheight / 2;
-        var $cheightTwo = ($cheight*2)-$startPoint;
         $(window).scroll(function () {
+            var $cheight = $('section:nth-of-type(1)').height();
+            var $startPoint = $cheight / 2;
+            var $cheightTwo = ($cheight*2)-$startPoint;
             var $st = $(window).scrollTop();
             if($st >= $startPoint){
                 $('section:nth-of-type(2)').animate({opacity: '1'}, 1500);
             }
-            if($st >= $cheightTwo){
-                $('section:nth-of-type(3)').animate({opacity: '1'}, 1500);
+            if ($st >= $cheightTwo) {
+                $('section:nth-of-type(3)').animate({ opacity: '1' }, 1500);
             }
+
+            const $sTop = $(window).scrollTop();
+            const $sec1 = $('section:nth-of-type(1)');
+            const $sec2 = $('section:nth-of-type(2)');
+            const $sec3 = $('section:nth-of-type(3)');
+            if(0 < $sTop && $sTop == 100){
+                $('html, body').animate({scrollTop : $sec2.offset().top});
+            }
+
+            if($sec2.offset().top < $sTop && $sTop == $sec2.offset().top + 100){
+                $('html, body').animate({scrollTop : $sec3.offset().top});
+            }
+
+
+            /* dotBar color active */
+            if(0 <= $sTop && $sTop < 400){
+                $('.container .d1').css({
+                    color : 'var(--color-darkOrange',
+                },1000)
+            }else{
+                $('.container .d1').css({
+                    color : 'white',
+                },1000)
+            }
+
+            if($sec2.offset().top - 200 <= $sTop && $sTop < $sec2.offset().top + 400){
+                $('.container .d2').css({
+                    color : 'var(--color-darkOrange',
+                },1000)
+            }else{
+                $('.container .d2').css({
+                    color : 'white',
+                },1000)
+            }
+
+            if($sec3.offset().top - 200 <= $sTop && $sTop < $sec3.offset().top + 400){
+                $('.container .d3').css({
+                    color : 'var(--color-darkOrange)',
+                },1000)
+            }else{
+                $('.container .d3').css({
+                    color : 'white',
+                },1000)
+            }
+        })
+
+        /* dotBar click evnt */
+        $('.container .d1').on('click', function(){
+                $('html, body').animate({scrollTop : '0'});
+        })
+
+        $('.container .d2').on('click', function(){
+                $('html, body').animate({scrollTop : $('section:nth-of-type(2)').offset().top});
+        })
+
+        $('.container .d3').on('click', function(){
+                $('html, body').animate({scrollTop : $('section:nth-of-type(3)').offset().top});
         })
     })
 </script>
-</body>
-</html>
