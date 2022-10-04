@@ -20,5 +20,6 @@
     --color-mainOrange: #F29F05;
     --color-darkOrange: #805300;
     --color-aliceBlue: #f0f8ff;
+    --gradient-yellowOrange: linear-gradient(90deg, rgba(242,212,5,1) 0%, rgba(242,159,5,1) 100%);
 }
 
