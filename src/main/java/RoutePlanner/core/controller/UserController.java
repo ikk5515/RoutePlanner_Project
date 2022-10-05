@@ -43,6 +43,7 @@ public class UserController {
         } catch (DataIntegrityViolationException e) {
             e.printStackTrace();
             bindingResult.reject("signupFailed", "이미 등록된 사용자입니다.");
+            log.info("error = {}", bindingResult);
             return "/members/signup";
         } catch (Exception e) {
             e.printStackTrace();
