@@ -1,0 +1,48 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<form th:action="@{/signUp}" th:object="${member}" method="post">
+
+    <div class="container">
+        <h1 >회원가입</h1>
+        <div class="form-group">
+            <label th:for="userID">userId</label>
+            <input type="text" th:field="*{userID}" class="form-control"  placeholder="사용자 아이디">
+        </div>
+
+        <div class="form-group">
+            <label th:for="userPassword">password</label>
+            <input type="password" th:field="*{userPassword}" class="form-control" placeholder="사용자 비밀번호">
+        </div>
+
+        <div class="form-group">
+            <label th:for="userPassword2">password check</label>
+            <input type="password" th:field="*{userPassword2}" class="form-control"  placeholder="사용자 비밀번호 다시 입력">
+        </div>
+
+        <div class="form-group">
+            <label th:for="userName">userName</label>
+            <input type="text" th:field="*{userName}" class="form-control" placeholder="사용자 이름">
+        </div>
+
+        <div class="form-group">
+            <label th:for="userGender">gender</label>
+            <input type="text" th:field="*{userGender}" class="form-control" placeholder="사용자 성별">
+        </div>
+
+        <div class="form-group">
+            <label th:for="userEmail">Email</label>
+            <input type="text" th:field="*{userEmail}" class="form-control" placeholder="사용자 아이디">
+        </div>
+
+        <button type="submit" class="btn btn-primary" >가입 완료</button>
+    </div>
+</form>
+
+</body>
+</html>
+
