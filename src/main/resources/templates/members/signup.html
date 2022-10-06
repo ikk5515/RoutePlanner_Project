@@ -5,6 +5,7 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="logo"><img src="../../static/img/Logo.png" alt=""></div>
     <form th:action="@{/signUp}" th:object="${member}" method="post">
         <div class="mainWrap">
             <div class="wrap">
@@ -50,4 +51,17 @@
     </form>
 </body>
 </html>
+<script>
+    $(function(){
+        $('.mainWrap .wrap').css({
+            left : '30%',
+            transition : '1s',
+        })
+
+        $('.mainWrap').css({
+            opacity : '1',
+            transition : '0.5s',
+        })
+    })
+</script>
 
