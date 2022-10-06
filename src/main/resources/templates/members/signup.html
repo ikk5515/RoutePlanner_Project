@@ -1,48 +1,53 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../static/css/signup.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </head>
 <body>
-
-<form th:action="@{/signUp}" th:object="${member}" method="post">
-
-    <div class="container">
-        <h1 >회원가입</h1>
-        <div class="form-group">
-            <label th:for="userID">userId</label>
-            <input type="text" th:field="*{userID}" class="form-control"  placeholder="사용자 아이디">
+    <form th:action="@{/signUp}" th:object="${member}" method="post">
+        <div class="mainWrap">
+            <div class="wrap">
+                <div class="contentWrap">
+                    <h1>회원가입</h1>
+                    <p>차후 회원정보변경은 불가능합니다.</p>
+                    <div>
+                        <label th:for="userID">아이디</label>
+                        <input type="text" th:field="*{userID}" placeholder=" 사용자 아이디">
+                    </div>
+                
+                    <div>
+                        <label th:for="userPassword">비밀번호</label>
+                        <input type="password" th:field="*{userPassword1}" placeholder=" 사용자 비밀번호">
+                    </div>
+                
+                    <div>
+                        <label th:for="userPassword2">비밀번호 확인</label>
+                        <input type="password" th:field="*{userPassword2}" placeholder=" 사용자 비밀번호 다시 입력">
+                    </div>
+                
+                    <div>
+                        <label th:for="userName">사용자명</label>
+                        <input type="text" th:field="*{userName}" placeholder=" 사용자 이름">
+                    </div>
+                
+                    <div>
+                        <label th:for="userGender">성별</label>
+                        <input type="radio" name="gen" th:field="*{userGender}" checked>남 
+                        &nbsp;&nbsp;
+                        <input type="radio" name="gen" th:field="*{userGender}">여
+                    </div>
+                
+                    <div>
+                        <label th:for="userEmail">Email</label>
+                        <input type="text" th:field="*{userEmail}" placeholder=" 사용자 아이디">
+                    </div>
+                
+                    <button type="submit">가입하기</button>
+                </div>
+            </div>
         </div>
-
-        <div class="form-group">
-            <label th:for="userPassword">password</label>
-            <input type="password" th:field="*{userPassword}" class="form-control" placeholder="사용자 비밀번호">
-        </div>
-
-        <div class="form-group">
-            <label th:for="userPassword2">password check</label>
-            <input type="password" th:field="*{userPassword2}" class="form-control"  placeholder="사용자 비밀번호 다시 입력">
-        </div>
-
-        <div class="form-group">
-            <label th:for="userName">userName</label>
-            <input type="text" th:field="*{userName}" class="form-control" placeholder="사용자 이름">
-        </div>
-
-        <div class="form-group">
-            <label th:for="userGender">gender</label>
-            <input type="text" th:field="*{userGender}" class="form-control" placeholder="사용자 성별">
-        </div>
-
-        <div class="form-group">
-            <label th:for="userEmail">Email</label>
-            <input type="text" th:field="*{userEmail}" class="form-control" placeholder="사용자 아이디">
-        </div>
-
-        <button type="submit" class="btn btn-primary" >가입 완료</button>
-    </div>
-</form>
-
+    </form>
 </body>
 </html>
 
