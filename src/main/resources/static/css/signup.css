@@ -2,17 +2,24 @@
 
 *{font-family: 'HGGGothicssi_40'; margin: 0; padding: 0;}
 body{background: var(--gradient-yellowOrange);}
-.mainWrap{width: 100%; height: 100vh; margin: 0 auto; background-color: rgba(0, 0,0, 0.5); position: relative;}
+div.logo{width:100%; height: 100px; position: fixed; background-color: black; opacity: 0.5;} 
+.logo > img{ display: inline-block;  width: 100px; height: 100px;}
 
-.mainWrap .wrap{width: 40%; height: 80vh; background-color: rgba(255, 255, 255); margin: 0 auto; position: absolute; left: 30%; top: 10vh; border-radius: 50px; min-width: 360px;}
+.mainWrap{width: 100%; height: 100vh; margin: 0 auto; background-color: rgba(0, 0,0, 0.5); position: relative; opacity: 0;}
+
+.mainWrap .wrap{width: 40%; height: 80vh; background-color: rgba(255, 255, 255); margin: 0 auto; position: absolute; left: 30%; top: 10vh; border-radius: 50px; min-width: 360px; opacity: 0;}
 
 .mainWrap .wrap .contentWrap{width: 70%; height: 80vh; margin: 0 auto; padding: 10vh 0 0 0 ;}
 .mainWrap .wrap .contentWrap h1{font-size: 2.5em;}
 .mainWrap .wrap .contentWrap p{margin: 0 0 8vh 0; font-size: 0.1em; color: rgba(0, 0,0, 0.2);}
 .mainWrap .wrap .contentWrap div{margin: 0 0 2vh 0; font-size: 1.25em;}
 .mainWrap .wrap .contentWrap div > label{width: 130px; display: inline-block;}
-.mainWrap .wrap .contentWrap div:not(:nth-of-type(5)) input{width: 250px; height: 30px;}
-.mainWrap .wrap .contentWrap div:nth-of-type(5) input{}
+.mainWrap .wrap .contentWrap div:not(:nth-of-type(5)) input{width: 245px; height: 30px; padding: 0 0 0 5px}
+.mainWrap .wrap .contentWrap div input{font-family: none;}
 
-.mainWrap .wrap .contentWrap button{width: 100px; height: 40px; font-size: 1.25em; position: absolute; right: 15%; bottom: 80px; border-radius: 10px; border: 1px solid gray; }
+.mainWrap .wrap .contentWrap button, body > button{width: 100px; height: 40px; font-size: 1.25em; position: absolute;  border-radius: 10px; border: 1px solid gray; }
+.mainWrap .wrap .contentWrap button{right: 15%; bottom: 80px;}
+.mainWrap .wrap .contentWrap button:nth-of-type(2){left: 15%; bottom: 80px;}
+.mainWrap .wrap .contentWrap button:nth-of-type(2) a{text-decoration: none; color:black}
 .mainWrap .wrap .contentWrap button:hover{background-color: var(--color-mainOrange);}
+body{}
