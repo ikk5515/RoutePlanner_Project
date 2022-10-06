@@ -2,29 +2,67 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<link th:href="@{/css/bootstrap.min.css}"
-      href="../../css/bootstrap.min.css" rel="stylesheet">
+<!-- <link th:href="@{/css/bootstrap.min.css}"
+      href="../../css/bootstrap.min.css" rel="stylesheet"> -->
+<link rel="stylesheet" href="../../static/css/home.css">
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="container" style="max-width: 600px">
-  <div class="py-5 text-center">
-    <h2>홈 화면</h2> </div>
-  <div class="row">
-    <div class="col">
-      <button class="w-100 btn btn-secondary btn-lg" type="button"
-              th:onclick="|location.href='@{/signUp}'|">
-        회원 가입
-      </button>
+<div class="backbody">
+  <div class="mainWrap">
+    <div>
+      <img class="img" src="../../static/img/Logo3.png" alt="logo">
+      <div class="backboard"></div>
     </div>
-    <div class="col">
-      <button class="w-100 btn btn-dark btn-lg"
-              onclick="location.href='login.html'"
-              th:onclick="|location.href='@{/Login}'|" type="button">
-        로그인
-      </button>
+    <div>
+      <div class="menu">
+        <button>로그인</button><button th:onclick="|location.href='@{/signUp}'|">
+          <!-- 줄바꿈으로 공백이 생겨서 이렇게 작성 -->
+          회원 가입
+        </button>
+      </div>
+      <div class="login">
+        <input type="text" placeholder="  아이디">
+        <div class="line"></div>
+        <input type="text" placeholder="  비밀번호">
+        <a href="main.html">로그인</a>
+      </div>
     </div>
   </div>
-  <hr class="my-4">
-</div> <!-- /container -->
+</div>
 </body>
 </html>
+<script>
+  $(function(){
+    /* load 이벤트 */
+    $('.backbody').css({
+      'background-color' : 'rgba(0, 0, 0, 0.3',
+      transition : '2s',
+    })
+    $('.mainWrap').css({
+      background : 'var(--gradient-yellowOrange)',
+      boxShadow : '0 10px 50px',
+      opacity : '1',
+      transition : '2s',
+    })
+
+    /* 로고 색상변경 interval */
+    function randomColor(){
+      var $colorCode = "#" + Math.round(Math.random() * 0xffffff).toString(16);
+      $('.backboard').css({'background-color' : $colorCode});
+    }
+
+    setInterval(function(){
+      randomColor();
+    },1500)
+
+    /* menu버튼 이벤트 */
+    $('.menu button:nth-of-type(1)').on('click', function () {
+      if ($('.login').is(":visible")) {
+        $('.login').slideUp();
+      } else {
+        $('.login').slideDown();
+      }
+    })
+  })
+</script>
