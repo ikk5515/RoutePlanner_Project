@@ -1,31 +1,40 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
+
 <meta charset="utf-8">
-<!-- <link th:href="@{/css/bootstrap.min.css}"
-      href="../../css/bootstrap.min.css" rel="stylesheet"> -->
-<link rel="stylesheet" href="../../static/css/home.css">
+<link rel="stylesheet" href="/css/home.css"}>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="backbody">
   <div class="mainWrap">
     <div>
-      <img class="img" src="../../static/img/Logo3.png" alt="logo">
+
+      <img class="img" src="/img/Logo3.png" alt="logo">
+
+      <img class="img" src="/img/Logo3.png" alt="logo">
+
       <div class="backboard"></div>
     </div>
     <div>
       <div class="menu">
-        <button>로그인</button><button th:onclick="|location.href='@{/signUp}'|">
+        <button sec:authorize="isAnonymous()">로그인</button><button sec:authorize="isAuthenticated()" onclick="location.href='home.html'" th:onclick="|location.href='@{/Logout}'|" type="button"> 로그아웃 </button><button type="button" th:onclick="|location.href='@{/signUp}'|">
+
           <!-- 줄바꿈으로 공백이 생겨서 이렇게 작성 -->
           회원 가입
         </button>
+
+        <!-- 줄바꿈으로 공백이 생겨서 이렇게 작성 -->
+        회원 가입
+      </button>
+
       </div>
       <div class="login">
         <input type="text" placeholder="  아이디">
         <div class="line"></div>
-        <input type="text" placeholder="  비밀번호">
-        <a href="main.html">로그인</a>
+        <input type="password" placeholder="  비밀번호">
+        <a sec:authorize="isAnonymous()" th:onclick="|location.href='@{/add}'|" type="button">로그인</a>
       </div>
     </div>
   </div>
