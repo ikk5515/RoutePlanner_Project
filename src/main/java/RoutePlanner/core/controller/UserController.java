@@ -46,6 +46,6 @@ public class UserController {
             return "/members/signup";
         }
         log.info("회원가입 성공!");
-        return "redirect:/add";
+        return "redirect:/Login";
     }
 }
