@@ -8,7 +8,7 @@ body{background: var(--gradient-yellowOrange);}
 .mainWrap{width: 70%; height: 100vh; margin: 0 auto; opacity: 0;}
 .mainWrap > div, .mainWrap > div:nth-of-type(2){width: 100%; position: relative; }
 .mainWrap > div{ height: 55vh;}
-.mainWrap > div img, .mainWrap > div .backboard{width: 400px; height: 400px; position: absolute; left: calc(50% - 200px); bottom: 0;} 
+.mainWrap > div img, .mainWrap > div .backboard{width: 400px; height: 400px; position: absolute; left: calc(50% - 200px); bottom: 0; opacity: 0.7;} 
 .mainWrap > div img{z-index: 10;}
 .mainWrap > div .backboard{z-index: 1; background-color: black; border-radius: 35px; transition: 1s; box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);}
 
