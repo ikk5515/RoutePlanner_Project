@@ -23,23 +23,18 @@ public class UserController {
         return "/members/signup";
     }
 
-    @GetMapping("/Login")
-    public String showlogin() {
-        return "/members/login";
-    }
-
     @PostMapping("/signUp")
     public String save(@ModelAttribute("member") @Valid Member member, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             log.info("errors = {}", bindingResult);
             return "/members/signup";
         }
-        if (!member.getUserPassword().equals(member.getUserPassword2())) {
-            bindingResult.rejectValue("password2", "passwordInCorrect", "2개의 패스워드가 일치하지 않습니다.");
+        if (!member.getUserPassword1().equals(member.getUserPassword2())) {
+            bindingResult.rejectValue("userPassword2", "passwordInCorrect", "2개의 패스워드가 일치하지 않습니다.");
             return "/members/signup";
         }
         try {
-            memberService.create(member.getId(), member.getUserID(), member.getUserPassword(), member.getUserName(), member.getUserGender(), member.getUserEmail());
+            memberService.create(member.getId(), member.getUserID(), member.getUserPassword1(), member.getUserName(), member.getUserGender(), member.getUserEmail());
         } catch (DataIntegrityViolationException e) {
             e.printStackTrace();
             bindingResult.reject("signupFailed", "이미 등록된 사용자입니다.");
@@ -53,7 +48,4 @@ public class UserController {
         log.info("회원가입 성공!");
         return "redirect:/add";
     }
-
-
-
 }
