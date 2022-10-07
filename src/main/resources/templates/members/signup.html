@@ -11,26 +11,29 @@
             <div class="wrap">
                 <div class="contentWrap">
                     <h1>회원가입</h1>
-                    <div th:replace="form_errors :: formErrorsFragment"></div>
                     <p>차후 회원정보변경은 불가능합니다.</p>
                     <div>
                         <label th:for="userID">아이디</label>
                         <input type="text" th:field="*{userID}" placeholder=" 사용자 아이디">
+                        <p th:if="${#fields.hasErrors('userID')}" th:errors="*{userID}" class="fieldError">Incorrect data</p>
                     </div>
                 
                     <div>
                         <label th:for="userPassword">비밀번호</label>
                         <input type="password" th:field="*{userPassword1}" placeholder=" 사용자 비밀번호">
+                        <p th:if="${#fields.hasErrors('userPassword1')}" th:errors="*{userPassword1}" class="fieldError">Incorrect data</p>
                     </div>
                 
                     <div>
                         <label th:for="userPassword2">비밀번호 확인</label>
                         <input type="password" th:field="*{userPassword2}" placeholder=" 사용자 비밀번호 다시 입력">
+                        <p th:if="${#fields.hasErrors('userPassword2')}" th:errors="*{userPassword2}" class="fieldError">Incorrect data</p>
                     </div>
                 
                     <div>
                         <label th:for="userName">사용자명</label>
                         <input type="text" th:field="*{userName}" placeholder=" 사용자 이름">
+                        <p th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" class="fieldError">Incorrect data</p>
                     </div>
                 
                     <div>
@@ -43,6 +46,7 @@
                     <div>
                         <label th:for="userEmail">Email</label>
                         <input type="text" th:field="*{userEmail}" placeholder=" 사용자 이메일">
+                        <p th:if="${#fields.hasErrors('userEmail')}" th:errors="*{userEmail}" class="fieldError">Incorrect data</p>
                     </div>
                 
                     <button type="submit">가입하기</button>
