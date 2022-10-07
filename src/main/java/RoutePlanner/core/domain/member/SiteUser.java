@@ -1,11 +1,11 @@
 package RoutePlanner.core.domain.member;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
-
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Getter
 @Setter
@@ -16,17 +16,18 @@ public class SiteUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
+    @Column(name = "USERID",unique = true)
     private String userID;
 
+    @Column(name = "USER_PASSWORD")
     private String userPassword;
 
-    @Column(unique = true)
+    @Column(name = "USER_NAME", unique = true)
     private String userName;
 
-    @Column(unique = true)
+    @Column(name = "USER_EMAIL", unique = true)
     private String userEmail;
 
-    @Column(unique = false)
+    @Column(name = "USER_GENDER", unique = false)
     private String userGender;
 }
