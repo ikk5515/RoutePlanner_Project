@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="mainWrap">
+    <div class="flexWrap">
+        <header>
+            <img src="/img/logo3.png" alt="">
+            <nav>
+                <ul>
+                    <li>Content</li>
+                    <li>Content</li>
+                    <li>Content</li>
+                    <li>Content</li>
+                </ul>
+            </nav>
+        </header>
+        <section>
+            <article>SubContent 1</article>
+            <article>SubContent 2</article>
+            <article>SubContent 3</article>
+            <article>SubContent 4</article>
+        </section>
+        <footer>
+            <ul>
+                <li>f_Content</li>
+                <li>f_Content</li>
+            </ul>
+        </footer>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    $(function(){
+        /* navBar hover 이벤트 */
+        $('header > img').hover(function(){
+            $(this).attr({
+                src : '../static/img/logo2.png',
+            })
+            $(this).css({width : '120px', transition : '0.5s'});
+        }, function(){
+            $(this).attr({
+                src : '../static/img/logo3.png',
+            })
+            $(this).css({width : '100px', transition : '0.5s'});
+        })
+
+        /* navBar click 이벤트 */
+        $('header nav ul li:nth-of-type(1)').on('click', function(){
+            $('article:nth-of-type(1)').css({display : 'inline-block', transition : '1s'});
+            $('article:nth-of-type(2)').css({display : 'none'});
+            $('article:nth-of-type(3)').css({display : 'none'});
+            $('article:nth-of-type(4)').css({display : 'none'});
+        })
+
+        $('header nav ul li:nth-of-type(2)').on('click', function(){
+            $('article:nth-of-type(1)').css({display : 'none'});
+            $('article:nth-of-type(2)').css({display : 'inline-block'});
+            $('article:nth-of-type(3)').css({display : 'none'});
+            $('article:nth-of-type(4)').css({display : 'none'});
+        })
+
+        $('header nav ul li:nth-of-type(3)').on('click', function(){
+            $('article:nth-of-type(1)').css({display : 'none'});
+            $('article:nth-of-type(2)').css({display : 'none'});
+            $('article:nth-of-type(3)').css({display : 'inline-block'});
+            $('article:nth-of-type(4)').css({display : 'none'});
+        })
+
+        $('header nav ul li:nth-of-type(4)').on('click', function(){
+            $('article:nth-of-type(1)').css({display : 'none'});
+            $('article:nth-of-type(2)').css({display : 'none'});
+            $('article:nth-of-type(3)').css({display : 'none'});
+            $('article:nth-of-type(4)').css({display : 'inline-block'});
+        })
+    })
+</script>
