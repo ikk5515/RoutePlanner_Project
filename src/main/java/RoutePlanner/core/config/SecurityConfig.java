@@ -32,6 +32,10 @@ public class SecurityConfig {
                 .logoutUrl("/Logout")
                 .logoutSuccessUrl("/Login");
 
+        http.sessionManagement()
+                .maximumSessions(1)
+                .maxSessionsPreventsLogin(false);
+
         http.authorizeRequests()
                 .antMatchers("/**").permitAll()
 
