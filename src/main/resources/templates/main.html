@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,9 +27,10 @@
             <sarticle>SubContent 2</sarticle>
             <article>SubContent 3</article>
             <article>SubContent 4</article>
-        </section>
+        </section>가
         <footer>
             <ul>
+                <li sec:authentication="principal.username"></li>
                 <li th:onclick="|location.href='@{/}'|">첫 페이지</li>
                 <li onclick="location.href='home.html'" th:onclick="|location.href='@{/Logout}'|" >로그아웃</li>
             </ul>
