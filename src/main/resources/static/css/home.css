@@ -4,6 +4,14 @@
 
 body{background: var(--gradient-yellowOrange);}
 
+body > div:nth-of-type(1) {}
+body > div:nth-of-type(1) > div{z-index: 100000; position: absolute; left: calc(50% - 350px); top: calc(50% - 75px); width: 700px; height: 145.5px; background-color: var(--color-aliceBlue); border-radius: 20px; box-shadow: 0 0 100px 1000px rgba(0, 0, 0, 0.5);}
+body > div:nth-of-type(1) > div .alertWrap{display: flex; margin: 0 auto; width: 500px; padding: 4% 0; }
+body > div:nth-of-type(1) > div .alertWrap img:nth-of-type(1){width: 80px; margin: 0 5% 0 0}
+body > div:nth-of-type(1) > div .alertWrap .alert{font-size: 1.5em; display: inline-block; padding: 6% 0; color: darkred;}
+body > div:nth-of-type(1) > div .alertWrap img:nth-of-type(2){position: absolute; right: 20px; top: 20px; width: 25px}
+body > div:nth-of-type(1) > div .two{position: absolute; left: 0; top: 0; z-index: 100; background-color: rgba(0, 0, 0, 0.5); width: 100%; height: 100vh;}
+
 .mainWrap{width: 70%; height: 100vh; margin: 0 auto; opacity: 0;}
 .mainWrap > div, .mainWrap > div:nth-of-type(2){width: 100%; position: relative; }
 .mainWrap > div{ height: 55vh;}
@@ -18,6 +26,7 @@ body{background: var(--gradient-yellowOrange);}
 .mainWrap > div:nth-of-type(2) .menu button:hover{ background-color: var(--color-darkOrange); color: var(--color-aliceBlue);}
 .mainWrap > div:nth-of-type(2) .menu button:nth-of-type(1):hover{border-radius: 25px 0 0 25px;}
 .mainWrap > div:nth-of-type(2) .menu button:nth-of-type(2):hover{border-radius: 0 25px 25px 0;}
+.mainWrap > div:nth-of-type(2) .menu .alert{margin: 10px 0 0 0; color: red;}
 
 
 .mainWrap > div:nth-of-type(2){margin: 5vh 0 0 0; height: 40vh;}
@@ -28,6 +37,8 @@ body{background: var(--gradient-yellowOrange);}
 .mainWrap > div:nth-of-type(2) .login .line{height: 1.5px; width: 400px; background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(142,139,133,1) 50%, rgba(255,255,255,1) 100%);}
 .mainWrap > div:nth-of-type(2) .login button{transition: 0.5s; display: inline-block; text-align: center; margin: 3vh 0 0 0; padding: 10px 0; text-decoration: none; font-size: 1.5em; color: var(--color-aliceBlue); width: 100px;  border-radius: 25px; background-color: var(--color-darkOrange);}
 .mainWrap > div:nth-of-type(2) .login button:hover{background-color: rgba(0, 0, 0, 0); color: black; width: 100%;}
+
+
 
 /* 아이디, 비밀번호 placeholder 포커스시 없애기 */
 input:focus::-webkit-input-placeholder,
