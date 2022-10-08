@@ -7,29 +7,30 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="backbody">
-    <div class="mainWrap">
-        <div>
-
-            <img class="img" src="/img/Logo3.png" alt="logo">
-
-            <img class="img" src="/img/Logo3.png" alt="logo">
-
-            <div class="backboard"></div>
-        </div>
-        <div>
-            <div class="menu">
-                <button sec:authorize="isAnonymous()">로그인</button><button sec:authorize="isAuthenticated()" onclick="location.href='home.html'" th:onclick="|location.href='@{/Logout}'|" type="button"> 로그아웃 </button><button type="button" sec:authorize="isAnonymous()" th:onclick="|location.href='@{/signUp}'|">
-
-                <!-- 줄바꿈으로 공백이 생겨서 이렇게 작성 -->
-                회원 가입
-            </button>
-            </div>
-            <div th:if="${param.error}">
+    <div class="alertBb">
+        <div th:if="${param.error}">
+            <div class="alertWrap">
+                <img src="/img/alert.png">
                 <div class="alert alert-danger">
                     사용자ID 또는 비밀번호를 확인해 주세요.
                 </div>
+                <img src="/img/xicon.png">
             </div>
+        </div>
+    </div>
+    <div class="backbody">
+        <div class="mainWrap">
+            <div>
+                <img class="img" src="/img/Logo3.png" alt="logo">
+                <div class="backboard"></div>
+            </div>
+            <div>
+                <div class="menu">
+                    <button sec:authorize="isAnonymous()">로그인</button><button sec:authorize="isAuthenticated()" onclick="location.href='home.html'" th:onclick="|location.href='@{/Logout}'|" type="button"> 로그아웃 </button><button type="button" sec:authorize="isAnonymous()" th:onclick="|location.href='@{/signUp}'|">
+                    <!-- 줄바꿈으로 공백이 생겨서 이렇게 작성 -->
+                    회원 가입
+                    </button>
+                </div>
                 <div class="login">
                     <input type="text" placeholder="  아이디">
                     <div class="line"></div>
@@ -52,7 +53,7 @@
     $(function(){
         /* load 이벤트 */
         $('.backbody').css({
-            'background-color' : 'rgba(0, 0, 0, 0.3',
+            'background-color' : 'rgba(0, 0, 0, 0.3)',
             transition : '2s',
         })
         $('.mainWrap').css({
@@ -79,6 +80,11 @@
             } else {
                 $('.login').slideDown();
             }
+        })
+
+        /* alert 닫기 */
+        $('body > div:nth-of-type(1) .alertWrap img:nth-of-type(2)').on('click', function(){
+            $('.alertBb').css({display : 'none'});
         })
     })
 </script>
