@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,14 +24,14 @@
         </header>
         <section>
             <article>SubContent 1</article>
-            <article>SubContent 2</article>
+            <sarticle>SubContent 2</sarticle>
             <article>SubContent 3</article>
             <article>SubContent 4</article>
         </section>
         <footer>
             <ul>
-                <li>f_Content</li>
-                <li>f_Content</li>
+                <li th:onclick="|location.href='@{/}'|">첫 페이지</li>
+                <li onclick="location.href='home.html'" th:onclick="|location.href='@{/Logout}'|" >로그아웃</li>
             </ul>
         </footer>
     </div>
@@ -43,12 +43,12 @@
         /* navBar hover 이벤트 */
         $('header > img').hover(function(){
             $(this).attr({
-                src : '../static/img/logo2.png',
+                src : '/static/img/logo2.png',
             })
             $(this).css({width : '120px', transition : '0.5s'});
         }, function(){
             $(this).attr({
-                src : '../static/img/logo3.png',
+                src : '/static/img/logo3.png',
             })
             $(this).css({width : '100px', transition : '0.5s'});
         })
