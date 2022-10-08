@@ -26,7 +26,7 @@ public class SecurityConfig {
                 .usernameParameter("userID")
                 .passwordParameter("userPassword")
                 .loginPage("/Login")
-                .defaultSuccessUrl("/Login");
+                .defaultSuccessUrl("/Main");
 
         LogoutConfigurer<HttpSecurity> httpSecurityLogoutConfigurer = http.logout()   // 로그아웃 기능 작동
                 .logoutUrl("/Logout")
