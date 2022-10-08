@@ -24,6 +24,6 @@ body{height: 100vh;}
 .mainWrap .flexWrap footer{width: 10%; height: 100vh; background: linear-gradient(180deg, rgba(242,212,5,1) 0%, rgba(242,159,5,1) 100%); text-align: center;}
 .mainWrap .flexWrap footer ul{list-style: none;}
 .mainWrap .flexWrap footer ul li{}
-.mainWrap .flexWrap footer ul li:hover{background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); color: black; font-size: 2em;}
+.mainWrap .flexWrap footer ul li:not(:nth-of-type(1)):hover{background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); color: black; font-size: 2em;}
 .mainWrap .flexWrap footer ul li:nth-of-type(1){}
 .mainWrap .flexWrap footer ul li:nth-of-type(2){}
