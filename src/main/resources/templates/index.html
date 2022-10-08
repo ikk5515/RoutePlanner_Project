@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,9 +41,7 @@
                 <div class="img i3"></div>
             </section>
         </div>
-        <button th:onclick="|location.href='@{/Login}'|">
-            <a>Let's go!</a>
-        </button>
+        <button sec:authorize="isAnonymous()" th:onclick="|location.href='@{/Login}'|" type="button">Let's go</button><button sec:authorize="isAuthenticated()" th:onclick="|location.href='@{/Main}'|" type="button">Let's go </button>
     </div>
 </body>
 </html>
