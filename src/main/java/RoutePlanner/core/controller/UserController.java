@@ -46,6 +46,11 @@ public class UserController {
             return "/members/signup";
         }
         log.info("회원가입 성공!");
-        return "redirect:/Login";
+        return "redirect:Main";
+    }
+
+    @GetMapping("/Main")
+    public String mainPage() {
+        return "main";
     }
 }
