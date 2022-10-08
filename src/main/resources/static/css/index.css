@@ -32,7 +32,8 @@ section:nth-of-type(1){display: flex;}
 section:nth-of-type(2){display: flex;}
 section:nth-of-type(3){display: flex;}
 
-button{position:absolute; left: calc(50% - 60px); top: 280vh; width: 120px; height: 50px; background-color: var(--color-darkOrange); border: none; border-radius: 50px; text-align: center;}
-button a{text-decoration: none; font-size: 1.5em; color: var(--color-aliceBlue)}
+button{color: var(--color-aliceBlue); transition: 0.5s; position:absolute; left: calc(50% - 60px); top: 280vh; width: 120px; height: 50px; background-color: var(--color-darkOrange); border: none; border-radius: 50px; text-align: center;}
+button:hover{background-color: rgba(255, 255, 255, 0); color: black; font-size: 1.25em;}
+button a{text-decoration: none; font-size: 1.5em; }
 
 
