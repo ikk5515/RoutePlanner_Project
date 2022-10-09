@@ -63,4 +63,9 @@ public class UserController {
         log.info("회원가입 성공!");
         return "redirect:Main";
     }
+
+    @GetMapping("/Main")
+    public String mainPage() {
+        return "/main";
+    }
 }
