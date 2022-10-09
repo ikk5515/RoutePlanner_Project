@@ -41,6 +41,7 @@
                         <input type="radio" name="gen" th:field="*{userGender}" value="남자" checked>남
                         &nbsp;&nbsp;
                         <input type="radio" name="gen" th:field="*{userGender}" value="여자">여
+                        <p th:if="${#fields.hasErrors('userGender')}" th:errors="*{userGender}">Incorrect data</p>
                     </div>
                 
                     <div>
