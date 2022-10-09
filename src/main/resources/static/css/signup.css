@@ -24,4 +24,4 @@ div.logo{width:100%; height: 100px; position: fixed; background-color: black; op
 .mainWrap .wrap .contentWrap button:hover{background-color: var(--color-mainOrange);}
 
 .mainWrap .wrap .contentWrap > div{position: relative}
-.mainWrap .wrap .contentWrap > div p{position: absolute; left: 142px; top: 32px; font-size: 0.5em; width:235px; color: red}
+.mainWrap .wrap .contentWrap > div p{position: absolute; left: 142px; top: 32px; font-size: 0.5em; width:235px; color: red;}
