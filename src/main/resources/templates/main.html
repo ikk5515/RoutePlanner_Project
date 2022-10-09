@@ -28,12 +28,50 @@
                     <h1>당신에 취향이 궁금해요!</h1>
                     <p>선택하신 키워드를 토대로 일정을 생성합니다.</p>
                     <form action="" method="">
-                        <p>당신은 평소 실내와 실외 중 무엇을 더 선호하시나요?</p>
-                        <input type="checkbox" name="q1" value="실내">
-                        <input type="checkbox" name="q1" value="실외">
-                        <input type="checkbox" name="q1" value="상관없음">
+                        <div class="q q1">
+                            <div>
+                                <div class="qicon">Q1.</div>
+                                <p>당신은 평소 실내와 실외 중 무엇을 더 선호하시나요?</p>
+                            </div>
+                            <div>
+                                <label><input type="radio" name="q1" value="실내">실내</label>
+                                <label><input type="radio" name="q1" value="실외">실외</label>
+                                <label><input type="radio" name="q1" value="상관없음">상관없음</label>
+                            </div>
+                        </div>
+                        <div class="q q1">
+                            <div>
+                                <div class="qicon">Q2.</div>
+                                <p>당신이 '나들이'를 떠올렸을 때 어떤 단어 떠오르나용?</p>
+                            </div>
+                            <div>
+                                <label><input type="radio" name="q2" value="">문화예술</label>
+                                <label><input type="radio" name="q2" value="">레포츠</label>
+                                <label><input type="radio" name="q2" value="">자연경관</label>
+                                <label><input type="radio" name="q2" value="">역사.유적</label>
+                                <label><input type="radio" name="q2" value="">맛집</label>
+                                <label><input type="radio" name="q2" value="">반려동물</label>
+                                <label><input type="radio" name="q2" value="">휴식.힐링</label>
+                                <label><input type="radio" name="q2" value="">공원</label>
+                                <label><input type="radio" name="q2" value="">카페</label>
+                                <label><input type="radio" name="q2" value="">쇼핑</label>
+                            </div>
+                        </div>
+                        <div class="q q1">
+                            <div>
+                                <div class="qicon">Q3.</div>
+                                <p>주로 누구와 함께 하시나요?</p>
+                            </div>
+                            <div>
+                                <label><input type="radio" name="q1" value="실내">실내</label>
+                                <label><input type="radio" name="q1" value="실외">실외</label>
+                                <label><input type="radio" name="q1" value="상관없음">상관없음</label>
+                            </div>
+                        </div>
                     </form>
                 </div>
+                <button><</button>
+                <button>></button>
             </article>
             <article>SubContent 2</article>
             <article>SubContent 3</article>
@@ -92,6 +130,27 @@
             $('article:nth-of-type(2)').css({display : 'none'});
             $('article:nth-of-type(3)').css({display : 'none'});
             $('article:nth-of-type(4)').css({display : 'inline-block'});
+        })
+
+        /* 사전설문조사 페이지 이동 이벤트 */
+        var distance = 0;
+        $('section article:nth-of-type(1) button:nth-of-type(1)').on('click', function(){
+            if(distance >= 0){return;}
+            distance += 100;
+            $('section article:nth-of-type(1) .surveyWrap form').css({
+                transform : 'translateX(' + distance + '%)',
+                transition : '0.5s',
+            })
+            console.log('translateX(' + distance + '%)');
+        })
+        $('section article:nth-of-type(1) button:nth-of-type(2)').on('click', function(){
+            if(distance <= -200){return;}
+            distance -= 100;
+            $('section article:nth-of-type(1) .surveyWrap form').css({
+                transform : 'translateX(' + distance + '%)',
+                transition : '0.5s',
+            })
+
         })
     })
 </script>
