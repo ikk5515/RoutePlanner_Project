@@ -7,8 +7,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Getter
-@Setter
+@Data
 @Table(name = "SITE_USER")
 public class SiteUser {
 
