@@ -11,17 +11,21 @@ body{height: 100vh;}
 .mainWrap .flexWrap header img:hover{}
 .mainWrap .flexWrap header nav{}
 .mainWrap .flexWrap header nav ul{}
-.mainWrap .flexWrap header nav ul li, .mainWrap .flexWrap footer ul li{font-size: 1.5em; padding: 3vh 0; transition: 0.5s; color: var(--color-aliceBlue);}
+.mainWrap .flexWrap header nav ul li, .mainWrap .flexWrap footer ul li{font-size: 1.5em; font-weight: 600; padding: 3vh 0; transition: 0.5s; color: var(--color-aliceBlue);}
 .mainWrap .flexWrap header nav ul li:hover{background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%); color: black; font-size: 2em;}
 
 .mainWrap .flexWrap section{display: inline-block; height: 100vh; width: 80%; position: relative;}
 .mainWrap .flexWrap section article{position: absolute; left:0; top: 0; width: 100%; height: 100%; font-size: 5em; transition: 0.5s;}
-.mainWrap .flexWrap section article:nth-of-type(1){display: none;}
+.mainWrap .flexWrap section article:nth-of-type(1){}
+.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap{width: 90%; height: 90vh; border-radius: 10px; box-shadow: 0px 0px 50px grey; margin: 0 auto;}
+.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form{width: 90%; margin: 5vh auto 0;}
+.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form h1{font-size: 0.5em; padding: 3vh 0 1vh 0}
+.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form p{font-size: 0.3em;}
 .mainWrap .flexWrap section article:nth-of-type(2){display: none;}
 .mainWrap .flexWrap section article:nth-of-type(3){display: none;}
 .mainWrap .flexWrap section article:nth-of-type(4){display: none;}
 
-.mainWrap .flexWrap footer{width: 10%; height: 100vh; background: linear-gradient(180deg, rgba(242,212,5,1) 0%, rgba(242,159,5,1) 100%); text-align: center;}
+.mainWrap .flexWrap footer{width: 10%; height: 100vh; background: linear-gradient(0deg, rgba(242,212,5,1) 0%, rgba(242,159,5,1) 100%); text-align: center;}
 .mainWrap .flexWrap footer ul{list-style: none;}
 .mainWrap .flexWrap footer ul li{}
 .mainWrap .flexWrap footer ul li:not(:nth-of-type(1)):hover{background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); color: black; font-size: 2em;}
