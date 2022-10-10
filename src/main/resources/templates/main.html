@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="/css/main.css">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=echp7ietnz"></script>
 </head>
 <body>
 <div class="mainWrap">
@@ -16,7 +17,7 @@
             <nav>
                 <ul>
                     <li>사전설문조사</li>
-                    <li>Content</li>
+                    <li>지도 view</li>
                     <li>Content</li>
                     <li>Content</li>
                 </ul>
@@ -73,7 +74,9 @@
                 <button><</button>
                 <button>></button>
             </article>
-            <article>SubContent 2</article>
+            <article>
+                <div id="map" style="width:100%;height:100vh;"></div>
+            </article>
             <article>SubContent 3</article>
             <article>SubContent 4</article>
         </section>
@@ -153,4 +156,44 @@
             console.log('translateX(' + distance + '%)');
         })
     })
+
+
+    /* 네이버 지도 API */
+    var mapOptions = { //지도 옵션 설정
+        center: new naver.maps.LatLng(37.4490704, 126.657250),
+        disableKineticPan: false,
+        zoom: 17
+    };
+    var Inhatc = new naver.maps.Map('map', mapOptions); //지도 생성
+
+    var marker = new naver.maps.Marker({ //마커 표시
+        position: new naver.maps.LatLng(37.4490704, 126.657250),
+        map: Inhatc
+    });
+
+    naver.maps.Event.addListener(Inhatc, 'click', function(e) { //클릭한 지점으로 마커 옮기기
+        marker.setPosition(e.coord);
+    });
+
+    var contentString = [ //정보창의 내용
+        '<div class="iw_inner">',
+        '   <h3>인하공업전문대학 7호관</h3>',
+        '   <p>인천광역시 미추홀구 소성로 71<br>',
+        '       <br>',
+        '       <a href="https://www.inhatc.ac.kr/" target="_blank">www.inhatc.ac.kr</a>',
+        '   </p>',
+        '</div>'
+    ].join('');
+
+    var infowindow = new naver.maps.InfoWindow({ //정보창 객체 생성
+        content: contentString
+    });
+
+    naver.maps.Event.addListener(marker, "click", function(e) { //클릭할때마다 정보창 열고 닫기
+        if (infowindow.getMap()) {
+            infowindow.close();
+        } else {
+            infowindow.open(Inhatc, marker);
+        }
+    });
 </script>
