@@ -136,7 +136,7 @@
         var distance = 0;
         $('section article:nth-of-type(1) button:nth-of-type(1)').on('click', function(){
             if(distance >= 0){return;}
-            distance += 100;
+            distance += 33.3333333;
             $('section article:nth-of-type(1) .surveyWrap form').css({
                 transform : 'translateX(' + distance + '%)',
                 transition : '0.5s',
@@ -144,13 +144,13 @@
             console.log('translateX(' + distance + '%)');
         })
         $('section article:nth-of-type(1) button:nth-of-type(2)').on('click', function(){
-            if(distance <= -200){return;}
-            distance -= 100;
+            if(distance <= -66.5){return;}
+            distance -= 33.3333333;
             $('section article:nth-of-type(1) .surveyWrap form').css({
                 transform : 'translateX(' + distance + '%)',
                 transition : '0.5s',
             })
-
+            console.log('translateX(' + distance + '%)');
         })
     })
 </script>

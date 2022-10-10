@@ -20,13 +20,13 @@ body{height: 100vh;}
 .mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap{width: 90%; height: 90vh; border-radius: 10px; box-shadow: 0px 0px 50px grey; margin: 5vh auto 0; overflow: hidden;}
 .mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap h1{font-size: 0.5em; padding: 3vh 0 1vh 5vh;}
 .mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap > p{font-size: 0.3em; padding: 0 0 0 5vh;}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form{width: 100%; margin: 20vh auto 0; display: flex; justify-content: space-between; }
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q{width: 100%; padding: 0 10%}
+.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form{width: 300%; margin: 20vh auto 0; display: flex;}
+.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q{width: 100%;}
 .mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q1{}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q div:nth-of-type(1){box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.3); display: flex; border-radius: 100px; background-color: rgba(242,212,5,1);}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q div:nth-of-type(1) .qicon{box-shadow: 5px 0 1px rgba(0, 0, 0, 0.3); display: inline-block; font-size: 0.5em; margin: 0 2% 0 0; padding:10px; border-radius: 100%; background: linear-gradient(90deg, rgba(242,212,5,1) 0%, rgba(242,159,5,1) 100%);}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q div:nth-of-type(1) p{font-size: 0.5em; display: inline-block; padding: 1vh 0 0 0;}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q div:nth-of-type(2){height: 150px; width: 1000px; margin: 0 auto; text-align: center;}
+.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q div:nth-of-type(1){margin: 0 auto; width: 80%; box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.3); display: flex; border-radius: 100px; background-color: rgba(242,212,5,1);}
+.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q div:nth-of-type(1) .qicon{margin: 0; padding: 15px 0 0 0; text-align: center; width: 70px; height: 55px; box-shadow: 5px 0 1px rgba(0, 0, 0, 0.3); display: inline-block; font-size: 0.5em; border-radius: 100%; background: linear-gradient(90deg, rgba(242,212,5,1) 0%, rgba(242,159,5,1) 100%);}
+.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q div:nth-of-type(1) p{font-size: 0.5em; display: inline-block; padding: 15px 0 0 30px; }
+.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q div:nth-of-type(2){height: 150px; margin: 0 auto; text-align: center;}
 .mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q div:nth-of-type(2) label{font-size: 0.4em;}
 .mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q div:nth-of-type(2) label input{}
 .mainWrap .flexWrap section article:nth-of-type(1) button{position:absolute; font-size: 1.2em; border-radius: 100px; padding:0 27px; border: none; background: none; color: rgba(0, 0, 0, 0.3); transition: 0.5s;}
