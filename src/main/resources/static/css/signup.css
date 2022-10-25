@@ -18,7 +18,7 @@ div.logo{width:100%; height: 100px; position: fixed; background-color: black; op
 .mainWrap .wrap .contentWrap div input{font-family: none;}
 
 .mainWrap .wrap .contentWrap button, body > button{width: 100px; height: 40px; font-size: 1.25em; position: absolute;  border-radius: 10px; border: 1px solid gray; }
-.mainWrap .wrap .contentWrap button{right: 15%; bottom: 100px;}
+.mainWrap .wrap .contentWrap button{cursor: pointer; right: 15%; bottom: 100px;}
 .mainWrap .wrap .contentWrap button:nth-of-type(2){left: 15%; bottom: 100px;}
 .mainWrap .wrap .contentWrap button:nth-of-type(2) a{text-decoration: none; color:black}
 .mainWrap .wrap .contentWrap button:hover{background-color: var(--color-mainOrange);}
