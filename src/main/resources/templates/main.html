@@ -33,52 +33,32 @@
                     <p>선택하신 키워드를 토대로 일정을 생성합니다.</p>
                     <form th:action="@{/Main}" th:object="${survey}" method="post">
                         <div class="q q1">
+                            <p class="errText" th:if="${#fields.hasErrors('userWhere')}" th:errors="*{userWhere}">Incorrect data</p>  <!-- 에러구문 -->
                             <div>
                                 <div class="qicon">Q1.</div>
                                 <p>당신은 평소 실내와 실외 중 무엇을 더 선호하시나요?</p>
                             </div>
-
                             <div>
-                                <label th:for="userWhere"><input type="radio" name="q1" th:field="*{userWhere}"
-                                                                 value="실내">실내</label>
-                                <label th:for="userWhere"><input type="radio" name="q1" th:field="*{userWhere}"
-                                                                 value="실외">실외</label>
-                                <label th:for="userWhere"><input type="radio" name="q1" th:field="*{userWhere}"
-                                                                 value="상관없음">상관없음</label>
-                                <p th:if="${#fields.hasErrors('userWhere')}" th:errors="*{userWhere}">Incorrect data</p>
+                                <label th:for="userWhere"><input type="radio" name="q1" th:field="*{userWhere}" value="실내">실내</label>
+                                <label th:for="userWhere"><input type="radio" name="q1" th:field="*{userWhere}" value="실외">실외</label>
+                                <label th:for="userWhere"><input type="radio" name="q1" th:field="*{userWhere}" value="상관없음">상관없음</label>
                             </div>
                         </div>
                         <div class="q q1">
+                            <p class="errText" th:if="${#fields.hasErrors('userWHAT')}" th:errors="*{userWHAT}">Incorrect data</p></label>
                             <div>
                                 <div class="qicon">Q2.</div>
-                                <p>당신이 '나들이'를 떠올렸을 때 어떤 단어 떠오르나용?</p>
+                                <p>당신의 평소 나들이 분위기는 어떤가요?</p>
                             </div>
                             <div>
-                                <label th:for="userWHAT"><input type="radio" name="q2" th:field="*{userWHAT}"
-                                                                value="문화예술">문화예술</label>
-                                <label th:for="userWHAT"><input type="radio" name="q2" th:field="*{userWHAT}"
-                                                                value="레포츠">레포츠</label>
-                                <label th:for="userWHAT"><input type="radio" name="q2" th:field="*{userWHAT}"
-                                                                value="자연경관">자연경관</label>
-                                <label th:for="userWHAT"><input type="radio" name="q2" th:field="*{userWHAT}"
-                                                                value="역사.유적">역사.유적</label>
-                                <label th:for="userWHAT"><input type="radio" name="q2" th:field="*{userWHAT}"
-                                                                value="맛집">맛집</label>
-                                <label th:for="userWHAT"><input type="radio" name="q2" th:field="*{userWHAT}"
-                                                                value="반려동물">반려동물</label>
-                                <label th:for="userWHAT"><input type="radio" name="q2" th:field="*{userWHAT}"
-                                                                value="휴식.힐링">휴식.힐링</label>
-                                <label th:for="userWHAT"><input type="radio" name="q2" th:field="*{userWHAT}"
-                                                                value="공원">공원</label>
-                                <label th:for="userWHAT"><input type="radio" name="q2" th:field="*{userWHAT}"
-                                                                value="카페">카페</label>
-                                <label th:for="userWHAT"><input type="radio" name="q2" th:field="*{userWHAT}"
-                                                                value="쇼핑">쇼핑</label>
-                                <p th:if="${#fields.hasErrors('userWHAT')}" th:errors="*{userWHAT}">Incorrect
-                                    data</p></label>
+                                <label th:for="userWHAT"><input type="radio" name="q2" th:field="*{userWHAT}" value="문화예술">나들이는 뭐니뭐니해도 활동적인 것이 짱이죠!</label>
+                                <label th:for="userWHAT"><input type="radio" name="q2" th:field="*{userWHAT}" value="레포츠">배움이 있는 나들이가 좋아요</label>
+                                <label th:for="userWHAT"><input type="radio" name="q2" th:field="*{userWHAT}" value="자연경관">나들이는 저에게 힐링하는 시간이에요~</label>
+                                <label th:for="userWHAT"><input type="radio" name="q2" th:field="*{userWHAT}" value="역사.유적">입이 즐거운 나들이가 최고에요</label>
                             </div>
                         </div>
                         <div class="q q1">
+                            <p class="errText" th:if="${#fields.hasErrors('userWho')}" th:errors="*{userWho}">Incorrect data</p>
                             <div>
                                 <div class="qicon">Q3.</div>
                                 <p>주로 누구와 함께 하시나요?</p>
@@ -89,10 +69,9 @@
                                 <label th:for="userWho"><input type="radio" name="q1" th:field="*{userWho}" value="친구">친구</label>
                                 <label th:for="userWho"><input type="radio" name="q1" th:field="*{userWho}" value="가족">가족</label>
                                 <label th:for="userWho"><input type="radio" name="q1" th:field="*{userWho}" value="혼자">혼자</label>
-                                <p th:if="${#fields.hasErrors('userWho')}" th:errors="*{userWho}">Incorrect data</p>
+                                <button type="submit">제출하기</button>
                             </div>
                         </div>
-                        <button type="submit">제출하기</button>
                     </form>
                 </div>
                 <button><</button>
