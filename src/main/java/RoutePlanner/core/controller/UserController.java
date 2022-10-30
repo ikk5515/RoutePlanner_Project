@@ -1,12 +1,18 @@
 package RoutePlanner.core.controller;
 
 import RoutePlanner.core.Service.MemberService;
+import RoutePlanner.core.Service.SurveyService;
 import RoutePlanner.core.domain.member.Member;
+import RoutePlanner.core.domain.survey.Memsur;
+import RoutePlanner.core.domain.survey.Survey;
 import RoutePlanner.core.repository.MemberRepository;
+import RoutePlanner.core.repository.SurveyRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,8 +27,10 @@ public class UserController {
 
     @Autowired
     private final MemberService memberService;
+    private final SurveyService surveyService;
 
     private final MemberRepository memberRepository;
+    private final SurveyRepository surveyRepository;
 
     @GetMapping("/signUp")
     public String dispsignup(Member member) {
@@ -61,11 +69,40 @@ public class UserController {
             return "/members/signup";
         }
         log.info("회원가입 성공!");
-        return "redirect:Main";
+        return "redirect:Login";
     }
 
     @GetMapping("/Main")
-    public String mainPage() {
+    public String mainPage(Survey survey) {
         return "/main";
+    }
+
+    @PostMapping("/Main")
+    public String save_survey(@ModelAttribute("survey") @Valid Memsur memsur, BindingResult bindingResult, Model model) {
+        Object principaluser = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserDetails userDetails = (UserDetails) principaluser;
+        String userID = userDetails.getUsername();
+
+        if (surveyRepository.existsByUserID(userID)) {
+            bindingResult.rejectValue("userID", "userIdError", "이미 설문조사를 완료하였습니다.");
+        }
+
+        if (bindingResult.hasErrors()) {
+            log.info("errors = {}", bindingResult);
+            return "/main";
+        }
+        try {
+            surveyService.create(memsur.getId(), userID, memsur.getUserWhere(), memsur.getUserWHAT(), memsur.getUserWho());
+        } catch (DataIntegrityViolationException e) {
+            e.printStackTrace();
+            log.info("error = {}", bindingResult);
+            return "/main";
+        } catch (Exception e) {
+            e.printStackTrace();
+            bindingResult.reject("surveyFailed", e.getMessage());
+            return "/main";
+        }
+        log.info("설문조사 완료!");
+        return "redirect:/Main";
     }
 }
