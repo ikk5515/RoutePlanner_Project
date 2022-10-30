@@ -9,7 +9,6 @@ import RoutePlanner.core.repository.MemberRepository;
 import RoutePlanner.core.repository.SurveyRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,7 +24,6 @@ import javax.validation.Valid;
 @Controller
 public class UserController {
 
-    @Autowired
     private final MemberService memberService;
     private final SurveyService surveyService;
 
@@ -78,19 +76,20 @@ public class UserController {
     }
 
     @PostMapping("/Main")
-    public String save_survey(@ModelAttribute("survey") @Valid Memsur memsur, BindingResult bindingResult, Model model) {
+    public String save(@ModelAttribute("survey") @Valid Memsur memsur, BindingResult bindingResult, Model model) {
         Object principaluser = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         UserDetails userDetails = (UserDetails) principaluser;
         String userID = userDetails.getUsername();
-
-        if (surveyRepository.existsByUserID(userID)) {
-            bindingResult.rejectValue("userID", "userIdError", "이미 설문조사를 완료하였습니다.");
-        }
 
         if (bindingResult.hasErrors()) {
             log.info("errors = {}", bindingResult);
             return "/main";
         }
+
+        if (surveyRepository.existsByUserID(userID)) {
+            surveyService.delete(userID);
+        }
+
         try {
             surveyService.create(memsur.getId(), userID, memsur.getUserWhere(), memsur.getUserWHAT(), memsur.getUserWho());
         } catch (DataIntegrityViolationException e) {
