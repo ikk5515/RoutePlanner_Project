@@ -29,6 +29,10 @@ body{height: 100vh;}
 .mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q div:nth-of-type(2){height: 150px; width: 70%;  margin: 0 auto; text-align: center;}
 .mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q div:nth-of-type(2) label{display:inline-block ; font-size: 0.4em; width: 150px;}
 .mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q div:nth-of-type(2) label input{}
+.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q:nth-of-type(2) div:nth-of-type(2) label{width: 800px;}
+.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q:nth-of-type(3) div:nth-of-type(2) {position: relative;}
+.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q:nth-of-type(3) div:nth-of-type(2) button{position: absolute; width: 200px; height: 60px; font-size: 0.5em; left: calc(50% - 100px); top: 35vh; color: var(--color-darkOrange); background-color: lightgrey;}
+.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q:nth-of-type(3) div:nth-of-type(2) button:hover{color: var(--color-aliceBlue); background-color: rgba(242,159,5,0.8); }
 .mainWrap .flexWrap section article:nth-of-type(1) button{position:absolute; font-size: 1.2em; border-radius: 100px; padding:0 27px; border: none; background: none; color: rgba(0, 0, 0, 0.3); transition: 0.5s;}
 .mainWrap .flexWrap section article:nth-of-type(1) button:hover{color: var(--color-aliceBlue); background-color: rgba(242,159,5,0.8); }
 .mainWrap .flexWrap section article:nth-of-type(1) button:nth-of-type(1){left:1%; top: 45vh;}
@@ -44,3 +48,13 @@ body{height: 100vh;}
 .mainWrap .flexWrap footer ul li:not(:nth-of-type(1)):hover{background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); color: black; font-size: 1.7em;}
 .mainWrap .flexWrap footer ul li:nth-of-type(1){}
 .mainWrap .flexWrap footer ul li:nth-of-type(2){}
+
+/*에러 메시지 css*/
+.errText{
+    color: red;
+    margin: 0 auto ;
+    width: 75%;
+    text-align: right;
+    font-size: 0.3em;
+    font-color: red;
+}
