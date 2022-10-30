@@ -8,7 +8,6 @@ public class Memsur {
 
     private Long id;
 
-    private String userID;
     @NotBlank(message = "첫번째 질문을 선택해주세요.")
     private String userWhere;
 
