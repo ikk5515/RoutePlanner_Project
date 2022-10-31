@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>survey</title>
@@ -11,7 +10,7 @@
     <div class="surveyWrap">
         <h1>당신에 취향이 궁금해요!</h1>
         <p>선택하신 키워드를 토대로 일정을 생성합니다.</p>
-        <form th:action="@{/Survey}" th:object="${survey}" method="post">
+        <form th:action="@{/SurveyForm}" th:object="${survey}" method="post">
             <div class="q q1">
                 <div>
                     <div>Q1.</div>

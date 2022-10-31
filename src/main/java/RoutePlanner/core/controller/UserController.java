@@ -77,12 +77,13 @@ public class UserController {
         return "/main";
     }
 
-    @GetMapping("/Survey")
-    public String SurveyPage() {
-        return "/survey";
+    @GetMapping("/SurveyForm")
+    public String SurveyPage(Survey survey)
+    {
+        return "/surveyForm";
     }
 
-    @PostMapping("/Survey")
+    @PostMapping("/SurveyForm")
     public String save(@ModelAttribute("survey") @Valid Memsur memsur, BindingResult bindingResult, Model model) {
         Object principaluser = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         UserDetails userDetails = (UserDetails) principaluser;
@@ -90,7 +91,7 @@ public class UserController {
 
         if (bindingResult.hasErrors()) {
             log.info("errors = {}", bindingResult);
-            return "/survey";
+            return "/surveyForm";
         }
 
         if (surveyRepository.existsByUserID(userID)) {
@@ -102,11 +103,11 @@ public class UserController {
         } catch (DataIntegrityViolationException e) {
             e.printStackTrace();
             log.info("error = {}", bindingResult);
-            return "/survey";
+            return "/surveyForm";
         } catch (Exception e) {
             e.printStackTrace();
             bindingResult.reject("surveyFailed", e.getMessage());
-            return "/survey";
+            return "/surveyForm";
         }
         log.info("설문조사 완료!");
         model.addAttribute("message", "설문조사를 완료하였습니다.");
