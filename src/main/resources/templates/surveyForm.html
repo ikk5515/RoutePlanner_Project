@@ -3,24 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>survey</title>
-    <link rel="stylesheet" href="/css/survey.css">
+    <link rel="stylesheet" href="/css/surveyForm.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </head>
 <body>
 <article>
     <div class="surveyWrap">
-        <h1>당신에 취향이 궁금해요!</h1>
-        <p>선택하신 키워드를 토대로 일정을 생성합니다.</p>
+        <div>
+            <h1>당신에 취향이 궁금해요.</h1>
+            <p>반드시 설문 조사에 참여해 당신에 대해 알려주세요~!</p>
+        </div>
         <form th:action="@{/SurveyForm}" th:object="${survey}" method="post">
             <div class="q q1">
                 <div>
-                    <div>Q1.</div>
+                    <div class="qicon">Q1.</div>
                     <p>당신은 평소 실내와 실외 중 무엇을 더 선호하시나요?</p>
                 </div>
                 <div>
-                    <label><input type="radio" name="q1" th:field="*{userWhere}" value="실내">실내</label>
-                    <label><input type="radio" name="q1" th:field="*{userWhere}" value="실외">실외</label>
-                    <label><input type="radio" name="q1" th:field="*{userWhere}" value="상관없음">상관없음</label>
-                </div>
+                <label><input type="radio" name="q1" th:field="*{userWhere}" value="실내">실내</label>
+                <label><input type="radio" name="q1" th:field="*{userWhere}" value="실외">실외</label>
+                <label><input type="radio" name="q1" th:field="*{userWhere}" value="상관없음">상관없음</label>
+            </div>
             </div>
             <div class="q q2">
                 <div>
@@ -53,10 +56,101 @@
                     <p>선택한 답변을 바꾸고 싶으시다면 설문조사를 다시 실시해주세요!</p>
                 </div>
                 <img src="/img/like.png">
-                <button type="submit">제출하기</button>
+                <button type="submit">제출</button>
             </div>
         </form>
+        <div class="foot">
+            <div>
+                <p>선택한 답변</p>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <img src="/img/logo3.png">
+            <div class="backboard"></div>
+        </div>
     </div>
 </article>
 </body>
 </html>
+<script>
+
+    $(function(){
+        /* 사전설문조사 페이지 이동 이벤트 */
+        var distance = 0;
+        var $point = $('.surveyWrap form .q > div:nth-of-type(2) label');
+        $($point).on('click', function () {
+            if (distance <= -66.5) {
+                return;
+            }
+            distance -= 12.5;
+            $('.surveyWrap form').css({
+                transform: 'translateX(' + distance + '%)',
+                transition: '1s',
+            })
+        })
+        /* +input 태그 오류 수정 */
+        var distance1 = 0;
+        var $point1 = $('.surveyWrap form .q > div:nth-of-type(2) label input');
+        $($point1).on('click', function () {
+            if (distance1 <= -66.5) {
+                return;
+            }
+            distance1 -= 25;
+            console.log(distance1);
+            $('.surveyWrap form').css({
+                transform: 'translateX(' + distance1 + '%)',
+                transition: '1s',
+            })
+        })
+
+        /* submit 버튼 hover EVT */
+        var submitBtn = $('.surveyWrap form .q4 button');
+        submitBtn.hover(function(){
+            submitBtn.html('OK!');
+        }, function(){
+            submitBtn.html('제출');
+        })
+
+        /* 하단 로고 색상 변경 */
+        function randomColor(){
+            var $colorCode = "#" + Math.round(Math.random() * 0xffffff).toString(16);
+            $('.backboard').css({'background-color' : $colorCode});
+        }
+        setInterval(function(){
+            randomColor();
+        },1500)
+
+        /**/
+        var $chkTxt1_1 = $('.surveyWrap form .q1 > div:nth-of-type(2) label:nth-of-type(1)');
+        var $chkTxt1_2 = $('.surveyWrap form .q1 > div:nth-of-type(2) label:nth-of-type(2)');
+        var $chkTxt1_3 = $('.surveyWrap form .q1 > div:nth-of-type(2) label:nth-of-type(3)');
+        var $span1 = $('.surveyWrap > div:nth-of-type(2) span:nth-of-type(1)');
+        $chkTxt1_1.on('click', function(){ $span1.html('실내');  })
+        $chkTxt1_2.on('click', function(){ $span1.html('실외');  })
+        $chkTxt1_3.on('click', function(){ $span1.html('상관없음');  })
+
+        var $chkTxt2_1 = $('.surveyWrap form .q2 > div:nth-of-type(2) label:nth-of-type(1)');
+        var $chkTxt2_2 = $('.surveyWrap form .q2 > div:nth-of-type(2) label:nth-of-type(2)');
+        var $chkTxt2_3 = $('.surveyWrap form .q2 > div:nth-of-type(2) label:nth-of-type(3)');
+        var $chkTxt2_4 = $('.surveyWrap form .q2 > div:nth-of-type(2) label:nth-of-type(4)');
+        var $span2 = $('.surveyWrap > div:nth-of-type(2) span:nth-of-type(2)');
+        $chkTxt2_1.on('click', function(){ $span2.html('활동적인');  })
+        $chkTxt2_2.on('click', function(){ $span2.html('배움이 있는');  })
+        $chkTxt2_3.on('click', function(){ $span2.html('힐링하는');  })
+        $chkTxt2_4.on('click', function(){ $span2.html('입이 즐거운');  })
+
+        var $chkTxt3_1 = $('.surveyWrap form .q3 > div:nth-of-type(2) label:nth-of-type(1)');
+        var $chkTxt3_2 = $('.surveyWrap form .q3 > div:nth-of-type(2) label:nth-of-type(2)');
+        var $chkTxt3_3 = $('.surveyWrap form .q3 > div:nth-of-type(2) label:nth-of-type(3)');
+        var $chkTxt3_4 = $('.surveyWrap form .q3 > div:nth-of-type(2) label:nth-of-type(4)');
+        var $chkTxt3_5 = $('.surveyWrap form .q3 > div:nth-of-type(2) label:nth-of-type(5)');
+        var $span3 = $('.surveyWrap > div:nth-of-type(2) span:nth-of-type(3)');
+        $chkTxt3_1.on('click', function(){ $span3.html('연인');  })
+        $chkTxt3_2.on('click', function(){ $span3.html('자녀');  })
+        $chkTxt3_3.on('click', function(){ $span3.html('친구');  })
+        $chkTxt3_4.on('click', function(){ $span3.html('가족');  })
+        $chkTxt3_5.on('click', function(){ $span3.html('혼자');  })
+    })
+
+</script>
