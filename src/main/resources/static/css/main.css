@@ -15,40 +15,9 @@ body{height: 100vh;}
 .mainWrap .flexWrap header nav ul li:hover{background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%); color: black; font-size: 1.7em;}
 
 .mainWrap .flexWrap section{display: inline-block; height: 100vh; width: 80%; position: relative;}
-.mainWrap .flexWrap section article{position: absolute; left:0; top: 0; width: 100%; height: 100%; font-size: 5em; transition: 0.5s;}
-.mainWrap .flexWrap section article:nth-of-type(1){}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap{min-width: 950px; width: 90%; height: 90vh; border-radius: 10px; box-shadow: 0px 0px 50px grey; margin: 5vh auto 0; overflow: hidden;}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap h1{font-size: 0.5em; padding: 3vh 0 1vh 5vh;}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap > p{font-size: 0.3em; padding: 0 0 0 5vh;}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form{width: 400%; margin: 20vh auto 0; display: flex;}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q{width: 100%;}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q1{}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q div:nth-of-type(1){margin: 0 auto; width: 80%; box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.3); display: flex; border-radius: 100px; background-color: rgba(242,212,5,1);}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q div:nth-of-type(1) .qicon{margin: 0; padding: 15px 0 0 0; text-align: center; width: 70px; height: 55px; box-shadow: 5px 0 1px rgba(0, 0, 0, 0.3); display: inline-block; font-size: 0.5em; border-radius: 100%; background: linear-gradient(90deg, rgba(242,212,5,1) 0%, rgba(242,159,5,1) 100%);}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q div:nth-of-type(1) p{font-size: 0.5em; display: inline-block; padding: 15px 0 0 30px; }
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q div:nth-of-type(2){height: 150px; width: 70%;  margin: 0 auto; text-align: center;}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q div:nth-of-type(2) label{display:inline-block; margin: 0 14px; font-size: 0.4em;  padding: 8px 0; text-align: center; transition: 0.5s;}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q div:nth-of-type(2) label:hover{background-color: var(--color-mainOrange); color: var(--color-aliceBlue); border-radius: 25px; border: 0px; padding: 8px 50px; font-size: 0.5em;}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q div:nth-of-type(2) label input{opacity: 0; margin-left: -14px;}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q:nth-of-type(2) div:nth-of-type(2){width:80%;}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q:nth-of-type(2) div:nth-of-type(2) label{width: 800px;}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q:nth-of-type(4){ position: relative;}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q:nth-of-type(4) div{position: relative; width: 55%; height: 230px; background-color: white; box-shadow: none; display: inline-block; margin:0 0 0 8%;}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q:nth-of-type(4) div p{padding: 0; display: inline-block;}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q:nth-of-type(4) div p:nth-of-type(1){font-size: 0.5em; font-weight: 600;}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q:nth-of-type(4) div p:nth-of-type(2){font-size: 0.3em;}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q:nth-of-type(4) img{width: 230px; height: 230px; position:absolute; left: 65%; top: -24%;}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q:nth-of-type(4) img{-webkit-animation: bounce 0.8s infinite linear;}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q:nth-of-type(4) button{position: absolute; width: 200px; height: 60px; font-size: 0.5em; left: calc(50% - 100px); top: 35vh; color: var(--color-darkOrange); background-color: lightgrey;}
-.mainWrap .flexWrap section article:nth-of-type(1) .surveyWrap form .q:nth-of-type(4) button:hover{color: var(--color-aliceBlue); background-color: rgba(242,159,5,0.8); }
-.mainWrap .flexWrap section article:nth-of-type(1) button{position:absolute; font-size: 1.2em; border-radius: 100px; padding:0 27px; border: none; background: none; color: rgba(0, 0, 0, 0.3); transition: 0.5s;}
-.mainWrap .flexWrap section article:nth-of-type(1) button:hover{color: var(--color-aliceBlue); background-color: rgba(242,159,5,0.8); }
-.mainWrap .flexWrap section article:nth-of-type(1) button:nth-of-type(1){left:1%; top: 45vh;}
-.mainWrap .flexWrap section article:nth-of-type(1) button:nth-of-type(2){right:1%; top:45vh;}
 
 .mainWrap .flexWrap section article:nth-of-type(2){display: none;}
 .mainWrap .flexWrap section article:nth-of-type(3){display: none;}
-.mainWrap .flexWrap section article:nth-of-type(4){display: none;}
 
 .mainWrap .flexWrap footer{width: 10%; height: 100vh; background: linear-gradient(0deg, rgba(242,212,5,1) 0%, rgba(242,159,5,1) 100%); text-align: center;}
 .mainWrap .flexWrap footer ul{list-style: none;}
