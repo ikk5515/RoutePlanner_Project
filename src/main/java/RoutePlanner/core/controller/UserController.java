@@ -73,7 +73,7 @@ public class UserController {
     }
 
     @GetMapping("/Main")
-    public String mainPage(Survey survey) {
+    public String mainPage() {
         return "/main";
     }
 
