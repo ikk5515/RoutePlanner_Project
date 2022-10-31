@@ -67,7 +67,9 @@ public class UserController {
             return "/members/signup";
         }
         log.info("회원가입 성공!");
-        return "redirect:Login";
+        model.addAttribute("message", "회원가입이 완료되었습니다.");
+        model.addAttribute("nextUrl", "/Login");
+        return "/setting/message";
     }
 
     @GetMapping("/Main")

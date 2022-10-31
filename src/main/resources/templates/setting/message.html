@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>message</title>
+</head>
+<body>
+<script th:inline="javascript">
+    var message = [[${message}]];
+    alert(message);
+    location.replace([[${nextUrl}]]);
+</script>
+</body>
+</html>
