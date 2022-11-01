@@ -115,4 +115,42 @@ public class UserController {
         return "/setting/message";
     }
 
+    @GetMapping("/reSurveyForm")
+    public String reSurveyPage(Survey survey)
+    {
+        return "/reSurveyForm";
+    }
+
+    @PostMapping("/reSurveyForm")
+    public String resave(@ModelAttribute("survey") @Valid Memsur memsur, BindingResult bindingResult, Model model) {
+        Object principaluser = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserDetails userDetails = (UserDetails) principaluser;
+        String userID = userDetails.getUsername();
+
+        if (bindingResult.hasErrors()) {
+            log.info("errors = {}", bindingResult);
+            return "/reSurveyForm";
+        }
+
+        if (surveyRepository.existsByUserID(userID)) {
+            surveyService.delete(userID);
+        }
+
+        try {
+            surveyService.create(memsur.getId(), userID, memsur.getUserWhere(), memsur.getUserWHAT(), memsur.getUserWho());
+        } catch (DataIntegrityViolationException e) {
+            e.printStackTrace();
+            log.info("error = {}", bindingResult);
+            return "/reSurveyForm";
+        } catch (Exception e) {
+            e.printStackTrace();
+            bindingResult.reject("surveyFailed", e.getMessage());
+            return "/reSurveyForm";
+        }
+        log.info("재설문 완료!");
+        model.addAttribute("message", "재설문을 완료하였습니다.");
+        model.addAttribute("nextUrl", "/Main");
+        return "/setting/message";
+    }
+
 }
