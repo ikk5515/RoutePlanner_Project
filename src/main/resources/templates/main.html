@@ -105,8 +105,17 @@
 
     /* 재설문 페이지로 이동 */
     function reSurvey() {
-        alert("재설문 화면으로 이동합니다.");
-        window.location.href = "/SurveyForm";
+        var answer;
+
+        //확인을 선택한 경우 자바스크립트를 호출할 때 같이 넘어온 url이라는 변수에 들어있는 주소로 페이지 이동
+        answer = confirm("재설문 화면으로 이동하시겠습니까?");
+
+        if(answer == true){
+            alert("재설문 화면으로 이동합니다.");
+            window.location.href = "/SurveyForm";
+        }
+
+
     }
 
     /* 네이버 지도 API */
