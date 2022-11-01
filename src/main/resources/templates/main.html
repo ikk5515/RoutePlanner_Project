@@ -35,7 +35,7 @@
             <ul>
                 <li sec:authentication="principal.username"></li>
                 <li th:onclick="|location.href='@{/}'|">첫 페이지</li>
-                <li onclick="location.href='home.html'" th:onclick="|location.href='@{/Logout}'|">로그아웃</li>
+                <li onclick="LogOut()">로그아웃</li>
                 <li onclick="reSurvey()">재설문</li>
             </ul>
         </footer>
@@ -114,8 +114,17 @@
             alert("재설문 화면으로 이동합니다.");
             window.location.href = "/SurveyForm";
         }
+    }
 
+    /* 로그아웃 confirm창 */
+    function LogOut() {
+        var logOut;
 
+        logOut = confirm("로그아웃 하시겠습니까?");
+
+        if (logOut == true) {
+            window.location.href = "/Logout"
+        }
     }
 
     /* 네이버 지도 API */
