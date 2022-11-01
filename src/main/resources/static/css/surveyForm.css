@@ -2,9 +2,20 @@
 
 *{margin: 0; padding: 0; font-family: 'HGGGothicssi_40';}
 
-body{width: 100%; overflow-y: hidden;}
+body{
+    width: 100%;
+    overflow-y: hidden;
+    background-color: rgba(128, 83, 0, 0.9);
+}
+body {
+    /* 문자 드래그 방지 */
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
 
-.surveyWrap{width: 80%; height: 80vh; box-shadow: 0px 0px 30px  rgba(0, 0, 0, 0.5); margin: 10vh auto 0; border-radius: 25px; overflow: hidden;}
+.surveyWrap{width: 80%; height: 80vh; box-shadow: 0px 0px 40px  rgba(0, 0, 0, 0.5); margin: 10vh auto 0; border-radius: 25px; overflow: hidden; background-color: white;}
 .surveyWrap > div{background: linear-gradient(90deg, rgba(242,159,5,1) 0%, rgba(242,212,5,1) 100%); height: 10vh; border-radius: 25px 25px 0 0;}
 .surveyWrap > div h1{font-size: 2em; margin: 0 0 5px 0; padding: 1.5vh 0 0 2%;}
 .surveyWrap > div > p{font-size: 1.5em; padding:0 0 0 2%;}
@@ -82,7 +93,7 @@ body{width: 100%; overflow-y: hidden;}
 }
 
 .surveyWrap > div:nth-of-type(2){position: relative; background: linear-gradient(90deg, rgba(242,212,5,1) 0%, rgba(242,159,5,1) 100%); height: 10vh; border-radius: 0 0 25px 25px;}
-.surveyWrap > div:nth-of-type(2) div:nth-of-type(1){width:50%; display:flex; padding: 3vh 0 0 0; width: 75%; margin: 0 auto; border-radius: 25px;}
+.surveyWrap > div:nth-of-type(2) div:nth-of-type(1){width:50%; display:flex; padding: 3vh 0 0 0; width: 75%; margin: 0 0 0 3%; border-radius: 25px;}
 .surveyWrap > div:nth-of-type(2) div:nth-of-type(1) p{font-size: 1.5em; background-color: var(--color-aliceBlue); border-radius: 25px; margin: 0 5px 0 0; padding: 5px 10px; color: var(--color-darkOrange);}
 .surveyWrap > div:nth-of-type(2) div:nth-of-type(1) span{font-size: 1.25em; margin: 0 0 0 5px; font-weight: 600; padding: 8px 10px  0;}
 .surveyWrap > div:nth-of-type(2) div:nth-of-type(1) span:nth-of-type(1){}
