@@ -7,11 +7,43 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </head>
 <body>
+<style>
+    .surveyWrap div:nth-of-type(1){position: relative;}
+    .backBtn{
+        width: 120px;
+        height: 40px;
+        font-size: 1.5em;
+        border-radius: 50px;
+        background-color: rgba(0,0,0,0);
+        border: none;
+        position: absolute;
+        left: 85%;
+        top: 29%;
+        transition: 1s;
+    }
+    .backBtn:hover{
+        color: white;
+        font-size: 1.75em;
+        background-color: var(--color-darkOrange);
+        width: 130px;
+    }
+</style>
+<script>
+    $(function(){
+        var $bBtn = $('.backBtn');
+        $bBtn.hover(function(){
+            $bBtn.html('Back!');
+        }, function(){
+            $bBtn.html('뒤로가기');
+        })
+    })
+</script>
 <article>
     <div class="surveyWrap">
         <div>
             <h1>당신에 취향이 궁금해요.</h1>
             <p>반드시 설문 조사에 참여해 당신에 대해 알려주세요~!</p>
+            <button class="backBtn">뒤로가기</button>
         </div>
         <form th:action="@{/reSurveyForm}" th:object="${survey}" method="post">
             <div class="q q1">
