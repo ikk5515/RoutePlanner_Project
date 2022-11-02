@@ -12,6 +12,14 @@
             src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=echp7ietnz"></script>
 </head>
 <body>
+
+<div class="loader">
+    <div>
+        <img class="ball" src="/img/loading.gif">
+        <p>Loading...</p>
+    </div>
+</div>
+
 <div class="mainWrap">
     <div class="flexWrap">
         <header>
@@ -100,6 +108,19 @@
                 transition: '1s',
             })
             console.log('translateX(' + distance + '%)');
+        })
+
+        /* 로딩 중 구현 */
+        const loader = $('.loader');
+        const html = $('html');
+
+        html.css({'overflow' : 'hidden'}); //로딩 중 스크롤 방지
+
+        $(window).on('load', ()=>{
+            setTimeout(() => {                      //  <-* 로딩속도 구현
+                loader.fadeOut(300);
+                html.css({'overflow' : 'auto'});    //스크롤 방지 해제
+            }, 1000);                               //  <-* 로딩속도 구현
         })
     })
 
