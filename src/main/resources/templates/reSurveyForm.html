@@ -37,13 +37,25 @@
             $bBtn.html('뒤로가기');
         })
     })
+
+    /* 다시 Main 페이지로 이동 */
+    function backConfirm() {
+        var goBack;
+
+        goBack = confirm("재설문을 취소하시겠습니까?");
+
+        if(goBack == true){
+            alert("재설문을 취소합니다.");
+            window.location.href = "/Main";
+        }
+    }
 </script>
 <article>
     <div class="surveyWrap">
         <div>
             <h1>당신에 취향이 궁금해요.</h1>
             <p>반드시 설문 조사에 참여해 당신에 대해 알려주세요~!</p>
-            <button class="backBtn">뒤로가기</button>
+            <button class="backBtn" onclick="backConfirm()">뒤로가기</button>
         </div>
         <form th:action="@{/reSurveyForm}" th:object="${survey}" method="post">
             <div class="q q1">
