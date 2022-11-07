@@ -38,8 +38,10 @@ public class PointDAO {
 
             ps = conn.prepareStatement(sql);  //쿼리 실행
             ResultSet rs = ps.executeQuery();   //ResultSet객체로 결과 저장
-
             while(rs.next()){
+                if(rs.getRow() == 6){
+                    break;
+                }
                 PlayVO vo = new PlayVO();
                 vo.setPlayno(rs.getString(1));
                 vo.setPlaykind(rs.getString(2));
@@ -69,6 +71,9 @@ public class PointDAO {
             ResultSet rs = ps.executeQuery();   //ResultSet객체로 결과 저장
 
             while(rs.next()){
+                if(rs.getRow() == 6){
+                    break;
+                }
                 CafeteriaVO vo = new CafeteriaVO();
                 vo.setRestno(rs.getString(1));
                 vo.setRestfrom(rs.getString(2));
@@ -98,6 +103,9 @@ public class PointDAO {
             ResultSet rs = ps.executeQuery();   //ResultSet객체로 결과 저장
 
             while(rs.next()){
+                if(rs.getRow() == 6){
+                    break;
+                }
                 CafeVO vo = new CafeVO();
                 vo.setCafeno(rs.getString(1));
                 vo.setCafefrom(rs.getString(2));
