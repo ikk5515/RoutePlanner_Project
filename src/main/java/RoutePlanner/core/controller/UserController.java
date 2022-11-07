@@ -72,11 +72,6 @@ public class UserController {
         return "/setting/message";
     }
 
-    @GetMapping("/Main")
-    public String mainPage() {
-        return "/main";
-    }
-
     @GetMapping("/SurveyForm")
     public String SurveyPage(Survey survey)
     {
