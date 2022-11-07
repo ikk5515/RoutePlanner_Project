@@ -36,7 +36,9 @@
             <article>
                 <div id="map" style="width:80vw;height:100vh;"></div>
             </article>
-            <article>SubContent 2</article>
+            <article>SubContent 2
+                <span th:text="${data}"></span>
+            </article>
             <article>SubContent 3</article>
         </section>
         <footer>
@@ -45,7 +47,6 @@
                 <li th:onclick="|location.href='@{/}'|">첫 페이지</li>
                 <li onclick="LogOut()">로그아웃</li>
                 <li onclick="reSurvey()">재설문</li>
-                <li th:text="${data}"></li>
             </ul>
         </footer>
     </div>
