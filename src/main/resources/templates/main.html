@@ -45,6 +45,7 @@
                 <li th:onclick="|location.href='@{/}'|">첫 페이지</li>
                 <li onclick="LogOut()">로그아웃</li>
                 <li onclick="reSurvey()">재설문</li>
+                <li th:text="${data}"></li>
             </ul>
         </footer>
     </div>
@@ -131,7 +132,7 @@
         //확인을 선택한 경우 자바스크립트를 호출할 때 같이 넘어온 url이라는 변수에 들어있는 주소로 페이지 이동
         answer = confirm("재설문 화면으로 이동하시겠습니까?");
 
-        if(answer == true){
+        if(answer === true){
             alert("재설문 화면으로 이동합니다.");
             window.location.href = "/reSurveyForm";
         }
@@ -143,7 +144,7 @@
 
         logOut = confirm("로그아웃 하시겠습니까?");
 
-        if (logOut == true) {
+        if (logOut === true) {
             window.location.href = "/Logout"
         }
     }
