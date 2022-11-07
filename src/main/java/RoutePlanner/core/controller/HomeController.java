@@ -1,5 +1,6 @@
 package RoutePlanner.core.controller;
 
+import RoutePlanner.core.controller.dao.DataPopAlgorithm;
 import RoutePlanner.core.domain.member.Member;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,9 +20,18 @@ public class HomeController {
     }
 
     @GetMapping("/Main")
-    public String mainPage(Model model) {
-        String hello = "HELLO";
-        model.addAttribute("data", hello);
+    public String mainPage(Model model){
+        StringBuilder sb = new StringBuilder();
+
+        DataPopAlgorithm pPop = new DataPopAlgorithm(); //play
+        DataPopAlgorithm teriaPop = new DataPopAlgorithm(); //cafeteria
+        DataPopAlgorithm cPop = new DataPopAlgorithm(); //cafe
+
+        sb.append(pPop.playPop());
+        sb.append(teriaPop.cafeteriaPop());
+        sb.append(cPop.cafePop());
+
+        model.addAttribute("data", sb);
         return "/main";
     }
 }
