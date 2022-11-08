@@ -6,7 +6,7 @@ import java.sql.*;
 public class PointDAO {
     private Connection conn;
     private PreparedStatement ps;
-    private final String URL = "jdbc:oracle:thin:@routeplanner_high?TNS_ADMIN=D://swClone//wallet";
+    private final String URL = "jdbc:oracle:thin:@routeplanner_high?TNS_ADMIN=/Users/ingi/wallet/wallet";
 
     {
         try {
@@ -16,30 +16,32 @@ public class PointDAO {
         }
     }
 
-    public void getConnection(){	//DriverManager를 이용하여 url에 해당하는 디비에 로그인
-        try{
-            conn = DriverManager.getConnection(URL, "admin","Rkdqorrl123!@");
-        }catch (Exception e){}
+    public void getConnection() {    //DriverManager를 이용하여 url에 해당하는 디비에 로그인
+        try {
+            conn = DriverManager.getConnection(URL, "admin", "Rkdqorrl123!@");
+        } catch (Exception e) {
+        }
     }
 
-    public void disConnection(){	//연결해제
-        try{
-            if(ps != null) ps.close();
-            if(conn != null) conn.close();
-        }catch (Exception e){}
+    public void disConnection() {    //연결해제
+        try {
+            if (ps != null) ps.close();
+            if (conn != null) conn.close();
+        } catch (Exception e) {
+        }
     }
 
     //play테이블 IO
-    public ArrayList<PlayVO> playAllData(){	// 값을 저장한 VO들을 저장할 ArrayList
+    public ArrayList<PlayVO> playAllData() {    // 값을 저장한 VO들을 저장할 ArrayList
         ArrayList<PlayVO> list = new ArrayList<>();
-        try{
+        try {
             getConnection();    //오라클 연결
             String sql = "select * from incheon_play";
 
             ps = conn.prepareStatement(sql);  //쿼리 실행
             ResultSet rs = ps.executeQuery();   //ResultSet객체로 결과 저장
-            while(rs.next()){
-                if(rs.getRow() == 6){
+            while (rs.next()) {
+                if (rs.getRow() == 6) {
                     break;
                 }
                 PlayVO vo = new PlayVO();
@@ -52,26 +54,26 @@ public class PointDAO {
                 list.add(vo); //list에 삽입
             }
             rs.close();
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
-        }finally {
+        } finally {
             disConnection();    //종료
         }
         return list;
     }
 
     //cafeteria테이블 IO
-    public ArrayList<CafeteriaVO> cafeteriaAllData(){	// 값을 저장한 VO들을 저장할 ArrayList
+    public ArrayList<CafeteriaVO> cafeteriaAllData() {    // 값을 저장한 VO들을 저장할 ArrayList
         ArrayList<CafeteriaVO> list = new ArrayList<>();
-        try{
+        try {
             getConnection();    //오라클 연결
             String sql = "select * from incheon_cafeteria";
 
             ps = conn.prepareStatement(sql);  //쿼리 실행
             ResultSet rs = ps.executeQuery();   //ResultSet객체로 결과 저장
 
-            while(rs.next()){
-                if(rs.getRow() == 6){
+            while (rs.next()) {
+                if (rs.getRow() == 6) {
                     break;
                 }
                 CafeteriaVO vo = new CafeteriaVO();
@@ -84,26 +86,26 @@ public class PointDAO {
                 list.add(vo); //list에 삽입
             }
             rs.close();
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
-        }finally {
+        } finally {
             disConnection();    //종료
         }
         return list;
     }
 
     //cafe테이블 IO
-    public ArrayList<CafeVO> cafeAllData(){	// 값을 저장한 VO들을 저장할 ArrayList
+    public ArrayList<CafeVO> cafeAllData() {    // 값을 저장한 VO들을 저장할 ArrayList
         ArrayList<CafeVO> list = new ArrayList<>();
-        try{
+        try {
             getConnection();    //오라클 연결
             String sql = "select * from incheon_cafe";
 
             ps = conn.prepareStatement(sql);  //쿼리 실행
             ResultSet rs = ps.executeQuery();   //ResultSet객체로 결과 저장
 
-            while(rs.next()){
-                if(rs.getRow() == 6){
+            while (rs.next()) {
+                if (rs.getRow() == 7) {
                     break;
                 }
                 CafeVO vo = new CafeVO();
@@ -113,13 +115,13 @@ public class PointDAO {
                 vo.setCafekind(rs.getString(4));
                 vo.setCafemenu(rs.getString(5));
                 vo.setCafeaddr(rs.getString(6));
-                vo.setCafegroup(rs.getString(6));
+                vo.setCafegroup(rs.getString(7));
                 list.add(vo); //list에 삽입
             }
             rs.close();
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
-        }finally {
+        } finally {
             disConnection();    //종료
         }
         return list;
