@@ -51,8 +51,24 @@ public class DataPopAlgorithm {
             sb.append(cfvo.getCafename() + ",");
             sb.append(cfvo.getCafekind() + ",");
             sb.append(cfvo.getCafemenu() + ",");
-            sb.append(cfvo.getCafegroup() + "\n");
         }
         return sb;
+    }
+
+    public StringBuilder userPop() {
+        userDao uData = new userDao();
+
+        ArrayList<surveyVO> uList = uData.surveyAllData();
+
+        for (int i = 0; i < uList.size(); i++) {
+            surveyVO surveyVO = uList.get(i);
+            sb.append(surveyVO.getID() + ",");
+            sb.append(surveyVO.getUserID() + ",");
+            sb.append(surveyVO.getUserWhere() + ",");
+            sb.append(surveyVO.getUserWhat() + ",");
+            sb.append(surveyVO.getUserWho() + ",");
+        }
+        return sb;
+
     }
 }
