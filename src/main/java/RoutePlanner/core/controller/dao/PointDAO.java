@@ -86,7 +86,7 @@ public class PointDAO {
                 if (i == 0) {
                     continue;
                 }
-                newPlayAddr += playSplitArr[i] + " ";
+                newPlayAddr += playSplitArr[i];
             }
 
             System.out.println(newPlayAddr);
