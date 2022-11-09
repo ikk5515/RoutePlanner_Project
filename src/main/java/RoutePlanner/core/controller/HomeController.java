@@ -18,18 +18,33 @@ public class HomeController {
     }
 
     @GetMapping("/Main")
-    public String mainPage(Model model){
+    public String mainPage(Model model) {
         StringBuilder sb = new StringBuilder();
 
-        DataPopAlgorithm pPop = new DataPopAlgorithm(); //play
-        DataPopAlgorithm teriaPop = new DataPopAlgorithm(); //cafeteria
-        DataPopAlgorithm cPop = new DataPopAlgorithm(); //cafe
+//        DataPopAlgorithm pPop = new DataPopAlgorithm(); //play
+//        DataPopAlgorithm teriaPop = new DataPopAlgorithm(); //cafeteria
+//        DataPopAlgorithm cPop = new DataPopAlgorithm(); //cafe
+//
+//        sb.append(pPop.playPop());
+//        sb.append(teriaPop.cafeteriaPop());
+//        sb.append(cPop.cafePop());
 
-        sb.append(pPop.playPop());
-        sb.append(teriaPop.cafeteriaPop());
-        sb.append(cPop.cafePop());
+        DataPopAlgorithm uPop = new DataPopAlgorithm();
+
+        sb.append(uPop.userPop());
 
         model.addAttribute("data", sb);
         return "/main";
     }
+
+//    @PostMapping("/Main")
+//    public String get_UserID(@ModelAttribute("user_id") String user_id, Model model) {
+//        System.out.println("userID: " + user_id);
+//        String userData = user_id;
+//        return userData;
+//    }
+
+
+
+
 }
