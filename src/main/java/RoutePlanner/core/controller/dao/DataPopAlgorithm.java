@@ -4,13 +4,14 @@ import java.util.*;
 
 public class DataPopAlgorithm {
     StringBuilder sb = new StringBuilder();
+
     public StringBuilder playPop() {
         PointDAO pData = new PointDAO();
 
         ArrayList<PlayVO> pList = pData.playAllData();
 
         sb.append("incheon_play Table Data [Count : 5]\n");
-        for(int i=0; i<pList.size(); i++) {
+        for (int i = 0; i < pList.size(); i++) {
             PlayVO pvo = pList.get(i);
             sb.append(pvo.getPlayno() + ",");
             sb.append(pvo.getPlaykind() + ",");
@@ -22,12 +23,12 @@ public class DataPopAlgorithm {
         return sb;
     }
 
-    public StringBuilder cafeteriaPop(){
+    public StringBuilder cafeteriaPop() {
         PointDAO ctData = new PointDAO();
 
         ArrayList<CafeteriaVO> ctList = ctData.cafeteriaAllData();
 
-        for(int i=0; i<ctList.size(); i++){
+        for (int i = 0; i < ctList.size(); i++) {
             CafeteriaVO cteriavo = ctList.get(i);
             sb.append(cteriavo.getRestno() + ",");
             sb.append(cteriavo.getRestfrom() + ",");
@@ -39,20 +40,53 @@ public class DataPopAlgorithm {
         return sb;
     }
 
-    public StringBuilder cafePop(){
+    public StringBuilder cafePop() {
         PointDAO cData = new PointDAO();
 
         ArrayList<CafeVO> cList = cData.cafeAllData();
 
-        for(int i=0; i<cList.size(); i++){
+        for (int i = 0; i < cList.size(); i++) {
             CafeVO cfvo = cList.get(i);
             sb.append(cfvo.getCafeno() + ",");
             sb.append(cfvo.getCafefrom() + ",");
             sb.append(cfvo.getCafename() + ",");
             sb.append(cfvo.getCafekind() + ",");
             sb.append(cfvo.getCafemenu() + ",");
-            sb.append(cfvo.getCafegroup() + "\n");
         }
         return sb;
+    }
+
+//    public StringBuilder userPop() {
+//        userDao uData = new userDao();
+//
+//        ArrayList<userVO> uList = uData.userAllData();
+//
+//        for (int i = 0; i < uList.size(); i++) {
+//            userVO userVO = uList.get(i);
+//            sb.append(userVO.getId() + ",");
+//            sb.append(userVO.getUSER_EMAIL() + ",");
+//            sb.append(userVO.getUSER_NAME() + ",");
+//            sb.append(userVO.getUSERID() + ",");
+//            sb.append(userVO.getUSER_GENDER() + ",");
+//        }
+//        return sb;
+//
+//    }
+
+    public StringBuilder userPop() {
+        userDao uData = new userDao();
+
+        ArrayList<surveyVO> uList = uData.surveyAllData();
+
+        for (int i = 0; i < uList.size(); i++) {
+            surveyVO surveyVO = uList.get(i);
+            sb.append(surveyVO.getID() + ",");
+            sb.append(surveyVO.getUserID() + ",");
+            sb.append(surveyVO.getUserWhere() + ",");
+            sb.append(surveyVO.getUserWhat() + ",");
+            sb.append(surveyVO.getUserWho() + ",");
+        }
+        return sb;
+
     }
 }
