@@ -21,13 +21,13 @@ public class HomeController {
     public String mainPage(Model model){
         StringBuilder sb = new StringBuilder();
 
-출      DataPopAlgorithm pPop = new DataPopAlgorithm(); //play
+      DataPopAlgorithm pPop = new DataPopAlgorithm(); //play
       DataPopAlgorithm teriaPop = new DataPopAlgorithm(); //cafeteria
       DataPopAlgorithm cPop = new DataPopAlgorithm(); //cafe
 
       sb.append(pPop.playPop());
       sb.append(teriaPop.cafeteriaPop());
-//      sb.append(cPop.cafePop());
+      sb.append(cPop.cafePop());
 
 //        DataPopAlgorithm uPop = new DataPopAlgorithm();
 
