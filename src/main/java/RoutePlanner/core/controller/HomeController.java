@@ -21,17 +21,17 @@ public class HomeController {
     public String mainPage(Model model){
         StringBuilder sb = new StringBuilder();
 
-//      DataPopAlgorithm pPop = new DataPopAlgorithm(); //play
-//      DataPopAlgorithm teriaPop = new DataPopAlgorithm(); //cafeteria
-//      DataPopAlgorithm cPop = new DataPopAlgorithm(); //cafe
-//
-//      sb.append(pPop.playPop());
-//      sb.append(teriaPop.cafeteriaPop());
+출      DataPopAlgorithm pPop = new DataPopAlgorithm(); //play
+      DataPopAlgorithm teriaPop = new DataPopAlgorithm(); //cafeteria
+      DataPopAlgorithm cPop = new DataPopAlgorithm(); //cafe
+
+      sb.append(pPop.playPop());
+      sb.append(teriaPop.cafeteriaPop());
 //      sb.append(cPop.cafePop());
 
-        DataPopAlgorithm uPop = new DataPopAlgorithm();
+//        DataPopAlgorithm uPop = new DataPopAlgorithm();
 
-        sb.append(uPop.userPop());
+//        sb.append(uPop.userPop());
 
         model.addAttribute("data", sb);
         return "/main";
