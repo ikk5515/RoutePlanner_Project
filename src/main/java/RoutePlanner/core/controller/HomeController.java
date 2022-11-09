@@ -19,17 +19,17 @@ public class HomeController {
 
     @GetMapping("/Main")
     public String mainPage(Model model){
-        StringBuilder sb = new StringBuilder();
+        String rData = "";
 
         DataPopAlgorithm pPop = new DataPopAlgorithm(); //play
         DataPopAlgorithm teriaPop = new DataPopAlgorithm(); //cafeteria
         DataPopAlgorithm cPop = new DataPopAlgorithm(); //cafe
 
-        sb.append(pPop.playPop());
-        sb.append(teriaPop.cafeteriaPop());
-        sb.append(cPop.cafePop());
+        rData += pPop.playPop()+"||";
+        rData += teriaPop.cafeteriaPop()+"||";
+        rData += cPop.cafePop()+"||";
 
-        model.addAttribute("data", sb);
+        model.addAttribute("data", rData);
         return "/main";
     }
 }
