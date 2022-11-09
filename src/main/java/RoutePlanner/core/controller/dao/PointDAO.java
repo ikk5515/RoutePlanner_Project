@@ -9,7 +9,8 @@ import java.sql.*;
 public class PointDAO {
     private Connection conn;
     private PreparedStatement ps;
-    private final String URL = "jdbc:oracle:thin:@routeplanner_high?TNS_ADMIN=/Users/ingi/wallet/wallet";
+    static String totalAddr;
+    private final String URL = "jdbc:oracle:thin:@routeplanner_high?TNS_ADMIN=D://swClone//wallet";
 
     {
         try {
@@ -59,6 +60,7 @@ public class PointDAO {
                 vo.setPlaywhat(rs.getString(3));
                 vo.setPlayname(rs.getString(4));
                 vo.setPlayaddr(rs.getString(5));
+                totalAddr = rs.getString(5);
                 vo.setPlaygroup(rs.getString(6));
                 list.add(vo); //list에 삽입
             }
@@ -73,19 +75,20 @@ public class PointDAO {
 
     //cafeteria테이블 IO
     public ArrayList<CafeteriaVO> cafeteriaAllData() {    // 값을 저장한 VO들을 저장할 ArrayList
-        ArrayList<CafeteriaVO> list = new ArrayList<>();
-        ArrayList<PlayVO> plist = new ArrayList<>();
-        PlayVO playVO = plist.get(0);
+        ArrayList<CafeteriaVO> list = new ArrayList<>();;
 
-        String playSplitAddr = playVO.getPlayaddr();
+        String playSplitAddr = totalAddr;
         String playSplitArr[] = playSplitAddr.split(" ");
 
 
-        playSplitAddr = null;
-        for (int i = 0; i < 2; i ++)  {
-            playSplitAddr += playSplitArr[i] + " ";
-        }
+        playSplitAddr = "";
+        //for (int i = 0; i < 2; i ++)  {
+        //    playSplitAddr += playSplitArr[i] + " ";
+        //}
+        playSplitAddr += playSplitArr[0] + "광역시 ";
+        playSplitAddr += playSplitArr[1];
 
+        System.out.println(playSplitAddr);
 
         try {
             getConnection();    //오라클 연결
@@ -97,7 +100,7 @@ public class PointDAO {
             ResultSet rs = ps.executeQuery();   //ResultSet객체로 결과 저장
 
             while (rs.next()) {
-                if (rs.getRow() == 6) {
+                if (rs.getRow() == 2) {
                     break;
                 }
                 CafeteriaVO vo = new CafeteriaVO();
