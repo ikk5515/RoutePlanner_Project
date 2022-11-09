@@ -10,5 +10,4 @@ public class CafeVO {
     private String cafekind;
     private String cafemenu;
     private String cafeaddr;
-    private String cafegroup;
 }
