@@ -1,5 +1,8 @@
 package RoutePlanner.core.controller.dao;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import java.util.*;
 import java.sql.*;
 
@@ -34,14 +37,20 @@ public class PointDAO {
     //play테이블 IO
     public ArrayList<PlayVO> playAllData() {    // 값을 저장한 VO들을 저장할 ArrayList
         ArrayList<PlayVO> list = new ArrayList<>();
+        Object principaluser = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserDetails userDetails = (UserDetails) principaluser;
+        String idUser = userDetails.getUsername();
+
         try {
             getConnection();    //오라클 연결
-            String sql = "select * from incheon_play";
+            String sql = "select * from incheon_play where PLAYGROUP like '%' || (select USERWHAT from SURVEY where USERID = ?) || '%' order by dbms_random.value";
 
-            ps = conn.prepareStatement(sql);  //쿼리 실행
+            ps = conn.prepareStatement(sql.toString());
+            ps.setString(1, idUser);
+
             ResultSet rs = ps.executeQuery();   //ResultSet객체로 결과 저장
             while (rs.next()) {
-                if (rs.getRow() == 6) {
+                if (rs.getRow() == 2) {
                     break;
                 }
                 PlayVO vo = new PlayVO();
@@ -65,11 +74,26 @@ public class PointDAO {
     //cafeteria테이블 IO
     public ArrayList<CafeteriaVO> cafeteriaAllData() {    // 값을 저장한 VO들을 저장할 ArrayList
         ArrayList<CafeteriaVO> list = new ArrayList<>();
+        ArrayList<PlayVO> plist = new ArrayList<>();
+        PlayVO playVO = plist.get(0);
+
+        String playSplitAddr = playVO.getPlayaddr();
+        String playSplitArr[] = playSplitAddr.split(" ");
+
+
+        playSplitAddr = null;
+        for (int i = 0; i < 2; i ++)  {
+            playSplitAddr += playSplitArr[i] + " ";
+        }
+
+
         try {
             getConnection();    //오라클 연결
-            String sql = "select * from incheon_cafeteria";
+            String sql = "select * from incheon_cafeteria where RESTFROM like '%' || ? || '%' order by dbms_random.value";
 
-            ps = conn.prepareStatement(sql);  //쿼리 실행
+
+            ps = conn.prepareStatement(sql.toString());  //쿼리 실행
+            ps.setString(1, playSplitAddr);
             ResultSet rs = ps.executeQuery();   //ResultSet객체로 결과 저장
 
             while (rs.next()) {
