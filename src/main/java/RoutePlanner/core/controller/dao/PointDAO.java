@@ -10,7 +10,7 @@ public class PointDAO {
     private Connection conn;
     private PreparedStatement ps;
     static String totalAddr;
-    private final String URL = "jdbc:oracle:thin:@routeplanner_high?TNS_ADMIN=D://swClone//wallet";
+    private final String URL = "jdbc:oracle:thin:@routeplanner_high?TNS_ADMIN=/Users/ingi/wallet/wallet";
 
     {
         try {
@@ -77,26 +77,26 @@ public class PointDAO {
     public ArrayList<CafeteriaVO> cafeteriaAllData() {    // 값을 저장한 VO들을 저장할 ArrayList
         ArrayList<CafeteriaVO> list = new ArrayList<>();;
 
-        String playSplitAddr = totalAddr;
-        String playSplitArr[] = playSplitAddr.split(" ");
-
-
-        playSplitAddr = "";
-        //for (int i = 0; i < 2; i ++)  {
-        //    playSplitAddr += playSplitArr[i] + " ";
-        //}
-        playSplitAddr += playSplitArr[0] + "광역시 ";
-        playSplitAddr += playSplitArr[1];
-
-        System.out.println(playSplitAddr);
-
         try {
+            String playSplitAddr = totalAddr;
+            String newPlayAddr = "";
+            String playSplitArr[] = playSplitAddr.split(" ");
+
+            for (int i = 0; i < 2; i ++)  {
+                if (i == 0) {
+                    continue;
+                }
+                newPlayAddr += playSplitArr[i] + " ";
+            }
+
+            System.out.println(newPlayAddr);
+
             getConnection();    //오라클 연결
             String sql = "select * from incheon_cafeteria where RESTFROM like '%' || ? || '%' order by dbms_random.value";
 
 
             ps = conn.prepareStatement(sql.toString());  //쿼리 실행
-            ps.setString(1, playSplitAddr);
+            ps.setString(1, newPlayAddr);
             ResultSet rs = ps.executeQuery();   //ResultSet객체로 결과 저장
 
             while (rs.next()) {
