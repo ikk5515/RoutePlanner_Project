@@ -105,7 +105,7 @@ public class PointDAO {
             ResultSet rs = ps.executeQuery();   //ResultSet객체로 결과 저장
 
             while (rs.next()) {
-                if (rs.getRow() == 7) {
+                if (rs.getRow() == 6) {
                     break;
                 }
                 CafeVO vo = new CafeVO();
@@ -115,7 +115,6 @@ public class PointDAO {
                 vo.setCafekind(rs.getString(4));
                 vo.setCafemenu(rs.getString(5));
                 vo.setCafeaddr(rs.getString(6));
-                vo.setCafegroup(rs.getString(7));
                 list.add(vo); //list에 삽입
             }
             rs.close();
