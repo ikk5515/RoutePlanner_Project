@@ -107,7 +107,7 @@ public class PointDAO {
                 vo.setRestno(rs.getString(1));
                 vo.setRestfrom(rs.getString(2));
                 vo.setRestname(rs.getString(3));
-                vo.setRestmenu(rs.getString(5));
+                vo.setRestmenu(rs.getString(4));
                 vo.setRestaddr(rs.getString(5));
                 vo.setRestgroup(rs.getString(6));
                 list.add(vo); //list에 삽입
@@ -124,15 +124,29 @@ public class PointDAO {
     //cafe테이블 IO
     public ArrayList<CafeVO> cafeAllData() {    // 값을 저장한 VO들을 저장할 ArrayList
         ArrayList<CafeVO> list = new ArrayList<>();
-        try {
-            getConnection();    //오라클 연결
-            String sql = "select * from incheon_cafe";
 
-            ps = conn.prepareStatement(sql);  //쿼리 실행
-            ResultSet rs = ps.executeQuery();   //ResultSet객체로 결과 저장
+        try {
+            String playSplitAddr = totalAddr;
+            String newPlayAddr = "";
+            String playSplitArr[] = playSplitAddr.split(" ");
+
+            for (int i = 0; i < 2; i ++)  {
+                if (i == 0) {
+                    continue;
+                }
+                newPlayAddr += playSplitArr[i];
+            }
+
+            getConnection();    //오라클 연결
+            String sql = "select * from incheon_cafe where CAFEFROM like '%' || ? || '%' order by dbms_random.value";
+
+
+            ps = conn.prepareStatement(sql.toString());  //쿼리 실행
+            ps.setString(1, newPlayAddr);
+            ResultSet rs = ps.executeQuery();           //ResultSet객체로 결과 저장
 
             while (rs.next()) {
-                if (rs.getRow() == 6) {
+                if (rs.getRow() == 2) {
                     break;
                 }
                 CafeVO vo = new CafeVO();
