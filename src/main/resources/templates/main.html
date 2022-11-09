@@ -93,9 +93,9 @@
                 }
                 return alert('Geocode Error, address:' + address);
             }
-            if (response.v2.meta.totalCount === 0) {
-                return alert('No result.');
-            }
+            // if (response.v2.meta.totalCount === 0) {
+            //     return alert('No result.');
+            // }
             var htmlAddresses = [],
                 item = response.v2.addresses[0],
                 point = new naver.maps.Point(item.x, item.y);
