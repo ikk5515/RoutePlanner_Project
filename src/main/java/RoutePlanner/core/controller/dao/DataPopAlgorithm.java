@@ -3,56 +3,55 @@ package RoutePlanner.core.controller.dao;
 import java.util.*;
 
 public class DataPopAlgorithm {
-    StringBuilder sb = new StringBuilder();
-    public StringBuilder playPop() {
+    String requestData = "";
+    public String playPop() {
         PointDAO pData = new PointDAO();
 
         ArrayList<PlayVO> pList = pData.playAllData();
 
-        sb.append("incheon_play Table Data [Count : 5]\n");
         for(int i=0; i<pList.size(); i++) {
             PlayVO pvo = pList.get(i);
-            sb.append(pvo.getPlayno() + ",");
-            sb.append(pvo.getPlaykind() + ",");
-            sb.append(pvo.getPlaywhat() + ",");
-            sb.append(pvo.getPlayname() + ",");
-            sb.append(pvo.getPlayaddr() + ",");
-            sb.append(pvo.getPlaygroup() + "\n");
+            requestData += pvo.getPlayno() + ",";
+            requestData += pvo.getPlaykind() + ",";
+            requestData += pvo.getPlaywhat() + ",";
+            requestData += pvo.getPlayname() + ",";
+            requestData += pvo.getPlayaddr() + ",";
+            requestData += pvo.getPlaygroup() + "\n";
         }
-        return sb;
+        return requestData;
     }
 
-    public StringBuilder cafeteriaPop(){
+    public String cafeteriaPop(){
         PointDAO ctData = new PointDAO();
 
         ArrayList<CafeteriaVO> ctList = ctData.cafeteriaAllData();
 
         for(int i=0; i<ctList.size(); i++){
             CafeteriaVO cteriavo = ctList.get(i);
-            sb.append(cteriavo.getRestno() + ",");
-            sb.append(cteriavo.getRestfrom() + ",");
-            sb.append(cteriavo.getRestname() + ",");
-            sb.append(cteriavo.getRestmenu() + ",");
-            sb.append(cteriavo.getRestaddr() + ",");
-            sb.append(cteriavo.getRestgroup() + "\n");
+            requestData += cteriavo.getRestno() + ",";
+            requestData += cteriavo.getRestfrom() + ",";
+            requestData += cteriavo.getRestname() + ",";
+            requestData += cteriavo.getRestmenu() + ",";
+            requestData += cteriavo.getRestaddr() + ",";
+            requestData += cteriavo.getRestgroup() + "\n";
         }
-        return sb;
+        return requestData;
     }
 
-    public StringBuilder cafePop(){
+    public String cafePop(){
         PointDAO cData = new PointDAO();
 
         ArrayList<CafeVO> cList = cData.cafeAllData();
 
         for(int i=0; i<cList.size(); i++){
             CafeVO cfvo = cList.get(i);
-            sb.append(cfvo.getCafeno() + ",");
-            sb.append(cfvo.getCafefrom() + ",");
-            sb.append(cfvo.getCafename() + ",");
-            sb.append(cfvo.getCafekind() + ",");
-            sb.append(cfvo.getCafemenu() + ",");
-            sb.append(cfvo.getCafegroup() + "\n");
+            requestData += cfvo.getCafeno() + ",";
+            requestData += cfvo.getCafefrom() + ",";
+            requestData += cfvo.getCafename() + ",";
+            requestData += cfvo.getCafekind() + ",";
+            requestData += cfvo.getCafemenu() + ",";
+            requestData += cfvo.getCafeaddr() + "\n";
         }
-        return sb;
+        return requestData;
     }
 }
