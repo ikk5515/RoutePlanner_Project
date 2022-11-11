@@ -9,7 +9,6 @@ public class DataPopAlgorithm {
 
         ArrayList<PlayVO> pList = pData.playAllData();
 
-        sb.append("incheon_play Table Data [Count : 5]\n");
         for(int i=0; i<pList.size(); i++) {
             PlayVO pvo = pList.get(i);
             sb.append(pvo.getPlayno() + ",");
