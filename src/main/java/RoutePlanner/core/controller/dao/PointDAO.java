@@ -9,7 +9,7 @@ import java.sql.*;
 public class PointDAO {
     private Connection conn;
     private PreparedStatement ps;
-    static String totalAddr;
+    public static String totalAddr;
     private final String URL = "jdbc:oracle:thin:@routeplanner_high?TNS_ADMIN=/Users/ingi/wallet/wallet";
 
     {
@@ -43,11 +43,25 @@ public class PointDAO {
         String idUser = userDetails.getUsername();
 
         try {
+            String newPlayAddr = "";
+            if (totalAddr != null) {
+                String playSplitAddr = totalAddr;
+                String playSplitArr[] = playSplitAddr.split(" ");
+
+                for (int i = 0; i < 2; i ++)  {
+                    if (i == 0) {
+                        continue;
+                    }
+                    newPlayAddr += playSplitArr[i];
+                }
+            }
+
             getConnection();    //오라클 연결
-            String sql = "select * from incheon_play where PLAYGROUP like '%' || (select USERWHAT from SURVEY where USERID = ?) || '%' order by dbms_random.value";
+            String sql = "select * from incheon_play where PLAYGROUP like '%' || (select USERWHAT from SURVEY where USERID = ?) || '%' and PLAYADDR like '%' || ? || '%' order by dbms_random.value";
 
             ps = conn.prepareStatement(sql.toString());
             ps.setString(1, idUser);
+            ps.setString(2, newPlayAddr);
 
             ResultSet rs = ps.executeQuery();   //ResultSet객체로 결과 저장
             while (rs.next()) {
@@ -88,8 +102,6 @@ public class PointDAO {
                 }
                 newPlayAddr += playSplitArr[i];
             }
-
-            System.out.println(newPlayAddr);
 
             getConnection();    //오라클 연결
             String sql = "select * from incheon_cafeteria where RESTFROM like '%' || ? || '%' order by dbms_random.value";
