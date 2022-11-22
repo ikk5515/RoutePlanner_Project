@@ -1,10 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html>
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+  <meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <title>간단한 지도 표시하기</title>
+  <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=echp7ietnz"></script>
 </head>
 <body>
-$END$
+<div id="map" style="width:100%;height:720px;"></div>
+<script>
+  var mapOptions = { //지도 옵션 설정
+    center: new naver.maps.LatLng(37.371657839593894, 127.11645126342773),
+    disableKineticPan: false,
+    scrollWheel: true, //마우스 휠로 확대나 축소 가능
+    minZoom: 9,
+    zoom: 15
+  };
+  var Inhatc = new naver.maps.Map('map', mapOptions); //지도 생성
+
+  var polyline = new naver.maps.Polyline({
+    map: Inhatc,
+    path: [
+      new naver.maps.LatLng(37.359924641705476, 127.1148204803467),
+      new naver.maps.LatLng(37.36343797188166, 127.11486339569092),
+      new naver.maps.LatLng(37.368520071054576, 127.11473464965819),
+      new naver.maps.LatLng(37.3685882848096, 127.1097823321533),
+      new naver.maps.LatLng(37.37355383612657, 127.1097823321533),
+      new naver.maps.LatLng(37.38001321351567, 127.11851119995116),
+      new naver.maps.LatLng(37.378546827477855, 127.11984157562254),
+      new naver.maps.LatLng(37.376637072444105, 127.12052822113036),
+      new naver.maps.LatLng(37.37530703574853, 127.12190151214598),
+      new naver.maps.LatLng(37.371657839593894, 127.11645126342773),
+      new naver.maps.LatLng(37.36855417793982, 127.1207857131958)
+    ],
+    strokeColor: '#ff0000',
+    strokeOpacity: 0.5,
+    strokeWeight: 7
+  });
+
+  const locations = [
+    { place:"start", lat: 37.359924641705476, lng: 127.1148204803467 },
+    { place:"waypoint", lat: 37.38001321351567, lng: 127.11851119995116 },
+    { place:"goal", lat: 37.36855417793982, lng: 127.1207857131958 },
+  ];
+
+  for (var i = 0; i < locations.length; i++) {
+    var marker = new naver.maps.Marker({
+      map: Inhatc,
+      title: locations[i].place,
+      position: new naver.maps.LatLng(locations[i].lat, locations[i].lng),
+    });
+  }
+</script>
 </body>
 </html>
