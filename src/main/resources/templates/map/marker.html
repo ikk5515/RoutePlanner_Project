@@ -1,0 +1,29 @@
+<!DOCTYPE html><html>
+<head>
+  <meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport"
+                                                                                   content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <title>다중 마커</title>
+  <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=echp7ietnz"></script>
+</head>
+<body>
+<div id="map" style="width:100%;height:700px;"></div>
+<script>
+  const locations = [
+    { place:"인하공업전문대학 7호관", lat: 37.4490704, lng: 126.657250 },
+    { place:"주안역", lat: 37.4649826, lng: 126.6800039 },
+  ];
+  var map = new naver.maps.Map('map', {
+    center: new naver.maps.LatLng(37.4550704, 126.682250),
+    zoom: 15
+  });
+
+  for (var i = 0; i < locations.length; i++) {
+    var marker = new naver.maps.Marker({
+      map: map,
+      title: locations[i].place,
+      position: new naver.maps.LatLng(locations[i].lat, locations[i].lng),
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>도로명주소를 좌표로 변환</title>
+  <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=echp7ietnz&submodules=geocoder"></script>
+</head>
+<body>
+<div id="map" style="width:100%;height:695px;"></div>
+<script>
+  var map = new naver.maps.Map("map", { //지도 생성
+            center: new naver.maps.LatLng(37.5666103, 126.9783882), //지도 시작좌표
+            zoom: 16
+          }),
+          infoWindow = null;
+  var place = new Array();
+  place.push("인천광역시 미추홀구 인하로 57");
+  place.push("인천광역시 남동구 인하로 607");
+  var str = null;
+
+  function searchAddressToCoordinate(address) {
+    naver.maps.Service.geocode({
+      query: address
+    }, function(status, response) {
+      if (status === naver.maps.Service.Status.ERROR) {
+        if (!address) {
+          return alert('Geocode Error, Please check address');
+        }
+        return alert('Geocode Error, address:' + address);
+      }
+      if (response.v2.meta.totalCount === 0) {
+        return alert('No result.');
+      }
+      var htmlAddresses = [],
+              item = response.v2.addresses[0],
+              point = new naver.maps.Point(item.x, item.y);
+      if (item.roadAddress) {
+        htmlAddresses.push('[도로명 주소] ' + item.roadAddress);
+      }
+      if (item.jibunAddress) {
+        htmlAddresses.push('[지번 주소] ' + item.jibunAddress);
+      }
+      if (item.englishAddress) {
+        htmlAddresses.push('[영문명 주소] ' + item.englishAddress);
+      }
+      infoWindow.setContent([
+        '<div style="padding:10px;min-width:200px;line-height:150%;">',
+        '<h4 style="margin-top:5px;">검색 주소 : '+ point.y +','+ point.x +' </h4><br />',
+        htmlAddresses.join('<br />'),
+        '</div>'
+      ].join('\n'));
+      map.setCenter(point);
+
+      var marker = new naver.maps.Marker({ //마커 생성
+        map: map,
+        position: new naver.maps.LatLng(point.y, point.x),
+      });
+      // infoWindow.open(map, marker);
+
+      naver.maps.Event.addListener(marker, "click", function(e) { //클릭할때마다 정보창 열고 닫기
+        if (infoWindow.getMap()) {
+          infoWindow.close();
+        } else {
+          infoWindow.open(map, marker);
+        }
+      });
+    });
+  }
+
+  function initGeocoder() { //좌표 구하는 기능
+    var latlng = map.getCenter(); // 위/경도 구하기
+    var utmk = naver.maps.TransCoord.fromLatLngToUTMK(latlng); // 위/경도 -> UTMK
+    var tm128 = naver.maps.TransCoord.fromUTMKToTM128(utmk);   // UTMK -> TM128
+    var naverCoord = naver.maps.TransCoord.fromTM128ToNaver(tm128); // TM128 -> NAVER
+
+    infoWindow = new naver.maps.InfoWindow({
+      content: ''
+    });
+
+    var i = 0;
+    str = place[i].toString();
+    searchAddressToCoordinate(str);
+  }
+  naver.maps.onJSContentLoaded = initGeocoder;
+</script>
+</body>
+</html>
