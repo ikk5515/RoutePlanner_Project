@@ -50,6 +50,7 @@ public class DataPopAlgorithm {
             sb.append(cfvo.getCafename() + ",");
             sb.append(cfvo.getCafekind() + ",");
             sb.append(cfvo.getCafemenu() + ",");
+            sb.append(cfvo.getCafeaddr() + "\n");
         }
         return sb;
     }
