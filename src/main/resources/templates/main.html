@@ -53,8 +53,6 @@
 </body>
 </html>
 <script>
-    infoWindow = null;
-
     /* 여기부터 데이터 추출부분 */
     var thData = document.querySelector(".thData").innerHTML;
     const thArr = thData.split("||");
@@ -62,6 +60,7 @@
     var playData = [];
     var cafeteriaData = [];
     var cafeData = [];
+    var playData2 = [];
     for(var i=0; i<thArr.length; i++){
         if (i == 0) {
             playData = thArr[i].split(',');
@@ -72,33 +71,47 @@
         if (i == 2) {
             cafeData = thArr[i].split(',');
         }
+        if (i == 3) {
+            playData2 = thArr[i].split(',');
+        }
     }
 
-    console.log(playData);
-    console.log(cafeteriaData);
-    console.log(cafeData);
-
-    var paddr = playData[4];
-    var teriaaddr = cafeteriaData[5];
-    var cafeaddr = cafeData[5];
+    const pointsAddr = [playData[4], cafeteriaData[5], cafeData[5], playData2[4]];
     /* 여기까지 */
 
+
+    //마커를 찍을 경유지들의 Arr (title, lat, lng)
+    const lcs = new Array();
+    const px = new Array();
+    const py = new Array();
+
+    //지번 주소를 도로명 주소로 변경해주는 함수
+    let index = 0;
     function searchAddressToCoordinate(address) {
         naver.maps.Service.geocode({
             query: address
         }, function(status, response) {
+            var lat = 0;
+            var lng = 0;
             if (status === naver.maps.Service.Status.ERROR) {
                 if (!address) {
                     return alert('Geocode Error, Please check address');
                 }
                 return alert('Geocode Error, address:' + address);
             }
-            // if (response.v2.meta.totalCount === 0) {
-            //     return alert('No result.');
-            // }
             var htmlAddresses = [],
-                item = response.v2.addresses[0],
-                point = new naver.maps.Point(item.x, item.y);
+            item = response.v2.addresses[0],
+            point = new naver.maps.Point(item.x, item.y);
+
+            lcs.push(
+                {lat: point.x, lng: point.y}
+            );
+            /*
+            px.push(point.x);
+            py.push(point.y);
+            */
+
+            /*
             if (item.roadAddress) {
                 htmlAddresses.push('[도로명 주소] ' + item.roadAddress);
             }
@@ -113,53 +126,40 @@
                 '<h4 style="margin-top:5px;">검색 주소 : '+ point.y +','+ point.x +' </h4><br />',
                 htmlAddresses.join('<br />'),
                 '</div>'
+            //map.setCenter(point);
             ].join('\n'));
-            map.setCenter(point);
             infoWindow.open(map, point);
+            */
+            return point;
         });
+        index++;
     }
 
-    var marker = new naver.maps.Marker({ //마커 생성
-        map: map,
-        /*position: new naver.maps.LatLng(point.y, point.x),*/
-    });
-    naver.maps.Event.addListener(marker, "click", function(e) { //클릭할때마다 정보창 열고 닫기(구현실패)
-        if (infoWindow.getMap()) {
-            infoWindow.close();
-        } else {
-            infoWindow.open(map, marker);
+    //좌표 구하는 기능
+    function initGeocoder() {
+            var latlng = map.getCenter(); // 위/경도 구하기
+            var utmk = naver.maps.TransCoord.fromLatLngToUTMK(latlng); // 위/경도 -> UTMK
+            var tm128 = naver.maps.TransCoord.fromUTMKToTM128(utmk);   // UTMK -> TM128
+            var naverCoord = naver.maps.TransCoord.fromTM128ToNaver(tm128); // TM128 -> NAVER
+
+            infoWindow = new naver.maps.InfoWindow({
+                content: ''
+            });
+            for(var i=0; i<pointsAddr.length; i++){
+                searchAddressToCoordinate(pointsAddr[i]);
+                console.log(pointsAddr[i]);
+            }
         }
-    });
 
-    function initGeocoder() { //좌표 구하는 기능
-        var latlng = map.getCenter(); // 위/경도 구하기
-        var utmk = naver.maps.TransCoord.fromLatLngToUTMK(latlng); // 위/경도 -> UTMK
-        var tm128 = naver.maps.TransCoord.fromUTMKToTM128(utmk);   // UTMK -> TM128
-        var naverCoord = naver.maps.TransCoord.fromTM128ToNaver(tm128); // TM128 -> NAVER
-
-        infoWindow = new naver.maps.InfoWindow({
-            content: ''
-        });
-        searchAddressToCoordinate(paddr);
-    }
     naver.maps.onJSContentLoaded = initGeocoder;
 
-    /* 네이버 지도 API */
+    /*
     var mapOptions = { //지도 옵션 설정
         center: new naver.maps.LatLng(37.4490704, 126.657250),
         disableKineticPan: false,
         zoom: 17
     };
     var map = new naver.maps.Map('map', mapOptions); //지도 생성
-
-    var marker = new naver.maps.Marker({ //마커 표시
-        position: new naver.maps.LatLng(37.4490704, 126.657250),
-        map: map,
-    });
-
-    naver.maps.Event.addListener(map, 'click', function (e) { //클릭한 지점으로 마커 옮기기
-        marker.setPosition(e.coord);
-    });
 
     var contentString = [ //정보창의 내용 (차후 수정)
         '<div class="iw_inner">',
@@ -171,17 +171,41 @@
         '</div>'
     ].join('');
 
+
     var infowindow = new naver.maps.InfoWindow({ //정보창 객체 생성
         content: contentString
     });
+    */
 
-    naver.maps.Event.addListener(marker, "click", function (e) { //클릭할때마다 정보창 열고 닫기
-        if (infowindow.getMap()) {
-            infowindow.close();
-        } else {
-            infowindow.open(map, marker);
-        }
+    //map display
+    let markers = new Array();
+    let infoWindows = new Array();
+
+    var map = new naver.maps.Map('map', {
+        center: new naver.maps.LatLng(37.4490704, 126.657250),
+        //disableKineticPan: false,
+        zoom: 17
     });
+
+    for(var i in lcs){
+    // 마커를 for문을 이용하여 여러개 찍기
+        var target = lcs[i]
+        var latlng = new naver.maps.LatLng(target.lat, target.lng);
+        var marker = new naver.maps.Marker({
+            map: map,
+            position: latlng,
+        });
+
+        var infowindow = new naver.maps.InfoWindow({ //정보창 객체 생성
+            content: '<div style="width:200px; text-align:center; padding:10px;"><b>' + "뿌직" + '</b><br></div>'
+        });
+
+        markers.push(marker);
+        infoWindows.push(infowindow);
+    }
+
+
+
 
 
     $(function () {
