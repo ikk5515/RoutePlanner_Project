@@ -81,6 +81,7 @@
     var paddr = playData[4];
     var teriaaddr = cafeteriaData[5];
     var cafeaddr = cafeData[5];
+    var locationaddr = [paddr,teriaaddr, cafeaddr];
     /* 여기까지 */
 
     function searchAddressToCoordinate(address) {
@@ -107,7 +108,7 @@
         });
     }
 
-    function initGeocoder() { //좌표 구하는 기능
+/*    function initGeocoder() { //좌표 구하는 기능
         var latlng = map.getCenter(); // 위/경도 구하기
         var utmk = naver.maps.TransCoord.fromLatLngToUTMK(latlng); // 위/경도 -> UTMK
         var tm128 = naver.maps.TransCoord.fromUTMKToTM128(utmk);   // UTMK -> TM128
@@ -116,9 +117,14 @@
         infoWindow = new naver.maps.InfoWindow({
             content: ''
         });
-        searchAddressToCoordinate(paddr);
+
+    }*/
+
+    for(var i=0; i<locationaddr.length; i++) {
+        searchAddressToCoordinate(locationaddr[i]);
     }
-    naver.maps.onJSContentLoaded = initGeocoder;
+
+/*    naver.maps.onJSContentLoaded = initGeocoder;*/
 
     /* 네이버 지도 API */
     var mapOptions = { //지도 옵션 설정
