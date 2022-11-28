@@ -30,10 +30,10 @@ public class HomeController {
         DataPopAlgorithm cPop = new DataPopAlgorithm(); //cafe
 
 
-        sb.append(pPop.playPop()  + "===================>");
-        sb.append(teriaPop.cafeteriaPop()  + "===================>");
-        sb.append(cPop.cafePop()  + "===================>");
-        sb.append(pPop1.playPop()  + "===================>");
+        sb.append(pPop.playPop()  + "||");
+        sb.append(teriaPop.cafeteriaPop()  + "||");
+        sb.append(cPop.cafePop()  + "||");
+        sb.append(pPop1.playPop()  + "||");
 //        sb.append(pPop2.playPop()  + "===================>");
 
 //        sb.append(teriaPop.cafeteriaPop() + "===================>");
