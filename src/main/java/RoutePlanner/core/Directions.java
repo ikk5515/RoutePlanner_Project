@@ -33,6 +33,7 @@ public class Directions {
                 br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
             }
 
+
             StringBuffer response = new StringBuffer();
 
             String inputLine;
