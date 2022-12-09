@@ -53,18 +53,21 @@
 </body>
 </html>
 <script>
-    infoWindow = null;
+//126.7052062, 37.4562557
+
+
 
     /* 여기부터 데이터 추출부분 */
     var thData = document.querySelector(".thData").innerHTML;
     const thArr = thData.split("||");
 
-    var playData = [];
+    var playData1 = [];
     var cafeteriaData = [];
     var cafeData = [];
+    var playData2 = [];
     for(var i=0; i<thArr.length; i++){
         if (i == 0) {
-            playData = thArr[i].split(',');
+            playData1 = thArr[i].split(',');
         }
         if (i == 1) {
             cafeteriaData = thArr[i].split(',');
@@ -72,17 +75,32 @@
         if (i == 2) {
             cafeData = thArr[i].split(',');
         }
+        if (i == 3) {
+            playData2 = thArr[i].split(',');
+        }
     }
 
-    var paddr = playData[4];
+    var paddr1 = playData1[4];
     var teriaaddr = cafeteriaData[5];
     var cafeaddr = cafeData[5];
-    var locationaddr = [paddr,teriaaddr, cafeaddr];
+    var paddr2 = playData2[4];
+    var locationaddr = [paddr1,teriaaddr, cafeaddr, paddr2]
+
+    var pTitle1 = playData1[3];
+    var tTitle = cafeteriaData[2];
+    var cTitle = cafeData[2];
+    var pTitle2 = playData2[3];
+    var locationTitle = [pTitle1,tTitle, cTitle, pTitle2];
 
     /* 여기까지 */
 
+
+
+
     const result_x = [];
     const result_y = [];
+    const first_x = [];
+    const first_y = [];
 
     function searchAddressToCoordinate(address) {
         naver.maps.Service.geocode({
@@ -99,20 +117,125 @@
                 point = new naver.maps.Point(item.x, item.y);
                 result_x.push(point.x);
                 result_y.push(point.y);
-
-            var marker = new naver.maps.Marker({ //마커 생성
-                map: map,
-                position: new naver.maps.LatLng(point.y, point.x),
-            });
+                if(address == paddr1){
+                    first_x.push(point.x);
+                    first_y.push(point.y);
+                }
         });
     }
+
+    //locationaddr배열의 모든 주소들을 좌표값으로 바꾸기
     for(var i=0; i<locationaddr.length; i++) {
         searchAddressToCoordinate(locationaddr[i]);
     }
 
+    var map = null; // 지도 객체 선언
+    setTimeout(()=>{
+        map = new naver.maps.Map("map", { //지도 생성
+            center: new naver.maps.LatLng(first_y[0], first_x[0]), //지도의 시작좌표를 처음 뽑는 데이터(Play)를 기준으로 삼음
+            zoom: 13
+        }),
+        infoWindow = null;
+        console.log("Check!!: " + result_y[0]);
+    },500);
+
+    let markers = new Array();
+    let infoWindows = new Array();
+
+    //AJAX 통신을 통한 JAVASCRIPT to JAVA 데이터 교환
     setTimeout(() => {
-        console.log(result_x[0])
-    }, 1000)
+        for(var i=0; i<4; i++){
+            var iconTemp = "";
+            if(i == 0){ iconTemp = "img/marker_1.png"; }
+            else if(i == 1){ iconTemp = "img/marker_2.png"; }
+            else if(i == 2){ iconTemp = "img/marker_3.png"; }
+            else{ iconTemp = "img/marker_4.png"; }
+            var marker = new naver.maps.Marker({ //마커 생성
+                map: map,
+                position: new naver.maps.LatLng(result_y[i], result_x[i]),
+                icon: {
+                    url: iconTemp,
+                    size: new naver.maps.Size(25, 37),
+                    scaledSize: new naver.maps.Size(25, 37)
+                },
+                animation: naver.maps.Animation.BOUNCE
+            });
+            //정보창 생성 부분
+            var infowindow = new naver.maps.InfoWindow({ //정보창 생성
+                content: '<div>' + locationTitle[i] + '</div><br>' + '<div>' + locationaddr[i] + '</div><br>'
+            });
+            markers.push(marker);
+            infoWindows.push(infowindow);
+        }
+
+         function getClickHandler(seq) {
+            return function(e) {  // 마커를 클릭하는 부분
+      var marker = markers[seq], // 클릭한 마커의 시퀀스로 찾는다.
+              infoWindow = infoWindows[seq]; // 클릭한 마커의 시퀀스로 찾는다
+      if (infoWindow.getMap()) {
+        infoWindow.close();
+      } else {
+        infoWindow.open(map, marker); // 표출 마커변수가 marker
+      }
+    }
+  }
+  for (var i=0; i<markers.length; i++) {
+    naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i)); // 클릭한 마커 핸들러
+  }
+
+        $.ajax({
+            url: 'procPolyLine',
+            method: 'POST',
+            data: {
+                result_x : result_x,
+                result_y : result_y,
+            },
+            success: (result) => {
+                console.log("x,y좌표값을 성공적으로 보냈음 : " + result);
+            },
+                error : function(){
+                    alert("첫번째 ajax오류입니다.");
+                }
+        });
+    }, 1000);
+
+    /* =============== ajax ================= */
+
+    setTimeout(() => {
+    $.ajax({
+	    url : "/test.action",
+	    type : 'post',
+	    data : {
+	    },
+	    success : function(data) { // controllor에서 list를 return 받았음
+            console.log("받은 데이터의 길이 : " + data.length);
+
+            let pathArr = [];
+
+            for(var i=0; i<data.length; i++){
+                pathArr.push(new naver.maps.LatLng(data[i][1], data[i][0]));
+            }
+
+
+            console.log("path값을 성공적으로 가져옴 : " + pathArr.length);
+
+
+            var polyline = new naver.maps.Polyline({
+                map: map,
+                path: pathArr,
+                strokeColor: '#ff0000',
+                strokeOpacity: 0.5,
+                strokeWeight: 4
+            });
+        },
+	        error : function() {
+		    alert("error");
+	    }
+    });
+    }, 3000);
+
+
+/*=========================================================================================*/
 
     $(function () {
         /* navBar hover 이벤트 */
