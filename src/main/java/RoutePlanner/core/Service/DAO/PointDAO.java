@@ -1,5 +1,8 @@
-package RoutePlanner.core.controller.dao;
+package RoutePlanner.core.Service.DAO;
 
+import RoutePlanner.core.Service.VO.CafeVO;
+import RoutePlanner.core.Service.VO.CafeteriaVO;
+import RoutePlanner.core.Service.VO.PlayVO;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -10,7 +13,7 @@ public class PointDAO {
     private Connection conn;
     private PreparedStatement ps;
     public static String totalAddr;
-    private final String URL = "jdbc:oracle:thin:@routeplanner_high?TNS_ADMIN=/Users/ingi/wallet/wallet";
+    private final String URL = "jdbc:oracle:thin:@routeplanner_high?TNS_ADMIN=D://swClone//wallet";
 
     {
         try {

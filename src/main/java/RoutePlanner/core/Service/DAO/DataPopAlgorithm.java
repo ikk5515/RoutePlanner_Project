@@ -1,4 +1,9 @@
-package RoutePlanner.core.controller.dao;
+package RoutePlanner.core.Service.DAO;
+
+import RoutePlanner.core.Service.VO.CafeVO;
+import RoutePlanner.core.Service.VO.CafeteriaVO;
+import RoutePlanner.core.Service.VO.PlayVO;
+import RoutePlanner.core.Service.VO.surveyVO;
 
 import java.util.*;
 
@@ -53,22 +58,5 @@ public class DataPopAlgorithm {
             sb.append(cfvo.getCafeaddr() + "\n");
         }
         return sb;
-    }
-
-    public StringBuilder userPop() {
-        userDao uData = new userDao();
-
-        ArrayList<surveyVO> uList = uData.surveyAllData();
-
-        for (int i = 0; i < uList.size(); i++) {
-            surveyVO surveyVO = uList.get(i);
-            sb.append(surveyVO.getID() + ",");
-            sb.append(surveyVO.getUserID() + ",");
-            sb.append(surveyVO.getUserWhere() + ",");
-            sb.append(surveyVO.getUserWhat() + ",");
-            sb.append(surveyVO.getUserWho() + ",");
-        }
-        return sb;
-
     }
 }
