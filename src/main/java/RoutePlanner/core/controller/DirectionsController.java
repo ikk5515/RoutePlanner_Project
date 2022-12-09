@@ -1,4 +1,8 @@
-package RoutePlanner.core;
+package RoutePlanner.core.controller;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -7,20 +11,21 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class Directions {
-
-    public static void main(String[] args) {
+public class DirectionsController {
+    public static Object xyToPolyLine(String s, String g, String w1, String w2) {
         String clientId = "echp7ietnz";
         String clientSecret = "TvwWk2a5zwXugw8FaIglU9UIgGiUepjUkOzsf9IT";
-        String start = "126.8799922,37.4660208"; //우리집
-        String goal = "126.9014944,37.4853149"; // 구로디지털단지
-        String way = "126.8933034,37.4684444"; //독산동
+        String start = s;
+        String goal = g;
+        String way1 = w1;
+        String way2 = w2;
 
         ScriptEngineManager manager = new ScriptEngineManager();
         ScriptEngine engine = manager.getEngineByName("JavaScript");
 
+        Object resArr = null;
         try {
-            String apiURL = "https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving?start=" + start + "&goal=" + goal + "&waypoints=" + way + "&option={trafast}";
+            String apiURL = "https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving?start=" + start + "&goal=" + goal + "&waypoints=" + way1 + "|" + way2 + "&option={trafast}";
             URL url = new URL(apiURL);
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
             con.setRequestMethod("GET");
@@ -42,9 +47,22 @@ public class Directions {
             }
 
             br.close();
-            System.out.println(response);
-        } catch (Exception var12) {
-            System.out.println(var12);
+
+            String response2 = response.toString();
+
+            JSONParser parser = new JSONParser();
+            try {
+                JSONObject jsonObject = (JSONObject) parser.parse(response2);
+                JSONObject jsonObject1 = (JSONObject) jsonObject.get("route");
+                JSONArray array = (JSONArray) jsonObject1.get("traoptimal");
+                JSONObject array1 = (JSONObject) array.get(0);
+                resArr = array1.get("path");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return resArr;
     }
 }
