@@ -1,4 +1,4 @@
-package RoutePlanner.core.controller.dao;
+package RoutePlanner.core.Service.VO;
 
 import lombok.Getter;
 import lombok.Setter;
