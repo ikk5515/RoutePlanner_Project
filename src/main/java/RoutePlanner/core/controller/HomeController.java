@@ -1,7 +1,7 @@
 package RoutePlanner.core.controller;
 
-import RoutePlanner.core.controller.dao.DataPopAlgorithm;
-import RoutePlanner.core.controller.dao.PointDAO;
+import RoutePlanner.core.Service.DAO.DataPopAlgorithm;
+import RoutePlanner.core.Service.DAO.PointDAO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
