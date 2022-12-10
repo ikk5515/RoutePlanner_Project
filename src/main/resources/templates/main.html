@@ -27,8 +27,8 @@
             <nav>
                 <ul>
                     <li>지도 view</li>
-                    <li>Content</li>
-                    <li>Content</li>
+                    <li class="cont">경로요약</li>
+                    <li>다른경로</li>
                 </ul>
             </nav>
         </header>
@@ -36,10 +36,11 @@
             <article>
                 <div id="map" style="width:80vw;height:100vh;"></div>
             </article>
-            <article>
-                <span class="thData" th:text="${data}"></span>
+            <article class="conBox">
+                <div class="art2Wrap"></div>
             </article>
             <article>SubContent 3</article>
+            <span class="thData" th:text="${data}" style="display: none"></span>
         </section>
         <footer>
             <ul>
@@ -54,12 +55,14 @@
 </body>
 </html>
 <script>
-    //126.7052062, 37.4562557
-
-
     /* 여기부터 데이터 추출부분 */
     var thData = document.querySelector(".thData").innerHTML;
     const thArr = thData.split("||");
+
+    for(var i=0; i<4; i++){
+        console.log("[DB응답 " + (i + 1) + "번 값] : " + thArr[i]);
+    }
+
 
     var playData1 = [];
     var cafeteriaData = [];
@@ -141,8 +144,13 @@
     }
 
     //locationaddr배열의 모든 주소들을 좌표값으로 바꾸기
+    try{
     for (var i = 0; i < locationaddr.length; i++) {
         searchAddressToCoordinate(locationaddr[i]);
+    }
+    }catch(e){
+        alert("주소변환에 문제가 발생했습니다. \n페이지를 재시작합니다!");
+        location.reload();
     }
 
     var map = null; // 지도 객체 선언
@@ -232,7 +240,8 @@
                 console.log("x,y좌표값을 성공적으로 보냈음 : " + result);
             },
             error: function () {
-                alert("첫번째 ajax오류입니다.");
+                alert("통신 문제가 발생했습니다. \n 페이지를 다시 실행합니다!");
+                location.reload();   // 페이지 리프레쉬
             }
         });
     }, 1000);
@@ -246,13 +255,16 @@
             data: {},
             success: function (data) { // controllor에서 list를 return 받았음
                 console.log("받은 데이터의 길이 : " + data.length);
+                if(data.length == 0){
+                    alert("통신 문제가 발생했습니다. \n페이지를 다시 실행합니다!");
+                    location.reload();
+                }
 
                 let pathArr = [];
 
                 for (var i = 0; i < data.length; i++) {
                     pathArr.push(new naver.maps.LatLng(data[i][1], data[i][0]));
                 }
-
 
                 console.log("path값을 성공적으로 가져옴 : " + pathArr.length);
 
@@ -266,7 +278,8 @@
                 });
             },
             error: function () {
-                alert("error");
+                alert("통신에 문제가 발생하여 다시 실행합니다!");
+                location.reload();   // 페이지 리프레쉬
             }
         });
     }, 3000);
@@ -297,25 +310,30 @@
         })
 
         $('header nav ul li:nth-of-type(2)').on('click', function () {
-            $('article:nth-of-type(1)').css({display: 'none'});
-            $('article:nth-of-type(2)').css({display: 'inline-block'});
-            $('article:nth-of-type(3)').css({display: 'none'});
-            $('article:nth-of-type(4)').css({display: 'none'});
+            contentToggle();
         })
 
         $('header nav ul li:nth-of-type(3)').on('click', function () {
-            $('article:nth-of-type(1)').css({display: 'none'});
-            $('article:nth-of-type(2)').css({display: 'none'});
-            $('article:nth-of-type(3)').css({display: 'inline-block'});
-            $('article:nth-of-type(4)').css({display: 'none'});
+            alert('다른 경로도 알려드릴게요~!');
+            location.reload();
         })
 
-        $('header nav ul li:nth-of-type(4)').on('click', function () {
-            $('article:nth-of-type(1)').css({display: 'none'});
-            $('article:nth-of-type(2)').css({display: 'none'});
-            $('article:nth-of-type(3)').css({display: 'none'});
-            $('article:nth-of-type(4)').css({display: 'inline-block'});
-        })
+        function contentToggle(){
+            let conBox = document.querySelector('.conBox');
+            conBox.classList.toggle('active');
+        }
+
+        let art2 = document.querySelector('.art2Wrap');
+        art2.innerHTML =
+            '<div>' + cafeteriaData[1] + '</div>' +  //추출지역
+            //요약 보기
+            '<div>' + playData1[3] + '</div>' +
+            '<div class="part">▽</div>' +
+            '<div>' + cafeteriaData[2] + '</div>' +
+            '<div class="part">▽</div>' +
+            '<div>' + cafeData[2] + '</div>' +
+            '<div class="part">▽</div>' +
+            '<div>' + playData2[3] + '</div>'
 
         /* 사전설문조사 페이지 이동 이벤트 */
         var distance = 0;
@@ -331,20 +349,21 @@
             })
             console.log('translateX(' + distance + '%)');
         })
-
-        /* 로딩 중 구현 */
-        const loader = $('.loader');
-        const html = $('html');
-
-        html.css({'overflow': 'hidden'}); //로딩 중 스크롤 방지
-
-        $(window).on('load', () => {
-            setTimeout(() => {                      //  <-* 로딩속도 구현
-                loader.fadeOut(300);
-                html.css({'overflow': 'auto'});    //스크롤 방지 해제
-            }, 1000);                               //  <-* 로딩속도 구현
-        })
     })
+
+    /* 로딩 중 구현 */
+    const loader = $('.loader');
+    const html = $('html');
+
+    html.css({'overflow': 'hidden'}); //로딩 중 스크롤 방지
+
+    $(window).on('load', () => {
+        setTimeout(() => {                      //  <-* 로딩속도 구현
+            loader.fadeOut(300);
+            html.css({'overflow': 'auto'});    //스크롤 방지 해제
+        }, 2500);                              //  <-* 로딩속도 구현
+    });
+
 
     /* 재설문 페이지로 이동 */
     function reSurvey() {
