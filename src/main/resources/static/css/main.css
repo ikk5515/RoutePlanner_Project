@@ -22,7 +22,7 @@ body{height: 100vh; overflow: hidden;}
 .mainWrap .flexWrap section article:nth-of-type(2) .art2Wrap{
     font-size: 1.5em;
     font-weight: 800;
-    width: 400px; height:500px;
+    width: 450px; height:620px;
     background-color: rgba(255, 255, 255, 0.7);
     text-align: center;
     border-radius: 25px;
@@ -32,10 +32,17 @@ body{height: 100vh; overflow: hidden;}
 }
 
 .art2Wrap div:nth-of-type(1){font-size: 1.75em; margin-bottom: 30px; padding: 20px 0; background-color: var(--color-mainOrange); border-radius:25px 25px 0 0; color: var(--color-aliceBlue);}
-.art2Wrap div:nth-of-type(2){margin: 10px 0; color: var(--color-darkOrange);}
-.art2Wrap div:nth-of-type(4){margin: 10px 0; color: var(--color-darkOrange);}
-.art2Wrap div:nth-of-type(6){margin: 10px 0; color: var(--color-darkOrange);}
-.art2Wrap div:nth-of-type(8){margin: 10px 0; color: var(--color-darkOrange);}
+.art2Wrap div:not(:nth-of-type(1)){margin: 10px 0; color: var(--color-darkOrange);}
+.art2Wrap div:nth-of-type(2){font-weight: 400;}
+.art2Wrap div:nth-of-type(5){font-weight: 200;}
+.art2Wrap div:nth-of-type(8){font-weight: 200;}
+.art2Wrap div:nth-of-type(11){font-weight: 200;}
+
+.art2Wrap div:nth-of-type(3){font-size: 1.1em;}
+.art2Wrap div:nth-of-type(6){font-size: 1.1em;}
+.art2Wrap div:nth-of-type(9){font-size: 1.1em;}
+.art2Wrap div:nth-of-type(12){font-size: 1.1em;}
+
 
 
 .mainWrap .flexWrap footer{width: 10%; height: 100vh; background: linear-gradient(0deg, rgba(242,212,5,1) 0%, rgba(242,159,5,1) 100%); text-align: center;}

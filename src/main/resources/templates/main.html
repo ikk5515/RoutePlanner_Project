@@ -205,9 +205,14 @@
                 },
                 animation: naver.maps.Animation.BOUNCE
             });
-            //정보창 생성 부분
+            //정보창 생성 부분 '#39BEF7'
             var infowindow = new naver.maps.InfoWindow({ //정보창 생성
-                content: '<div>' + locationTitle[i] + '</div><br>' + '<div>' + locationaddr[i] + '</div><br>'
+                content: '<div style="font-weight: 600; width: 240px; border-radius: 25px 25px 0 0; background-color: #183E69; color: white; font-size: 1em; padding: 10px; text-align: center;">' + locationTitle[i] + '</div>' +
+                         '<div style="font-weight: 600; width: 240px; border-radius: 0 0 10px 10px; background-color: rgba(0,0,0, 0.5); color: white; font-size: 1em; padding: 10px 10px 15px 10px; text-align: center;">' + locationaddr[i] + '</div>',
+                backgroundColor: 0,
+                borderWidth: 0,
+                disableAnchor: true,
+                pixelOffset: new naver.maps.Point(0, -40)
             });
             markers.push(marker);
             infoWindows.push(infowindow);
@@ -331,12 +336,16 @@
         art2.innerHTML =
             '<div>' + cafeteriaData[1] + '</div>' +  //추출지역
             //요약 보기
+            '<div>관광지</div>' +
             '<div>' + playData1[3] + '</div>' +
             '<div class="part">▽</div>' +
+            '<div>음식점</div>' +
             '<div>' + cafeteriaData[2] + '</div>' +
             '<div class="part">▽</div>' +
+            '<div>카페</div>' +
             '<div>' + cafeData[2] + '</div>' +
             '<div class="part">▽</div>' +
+            '<div>관광지</div>' +
             '<div>' + playData2[3] + '</div>'
 
         /* 사전설문조사 페이지 이동 이벤트 */
