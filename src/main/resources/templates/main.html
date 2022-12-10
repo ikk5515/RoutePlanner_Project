@@ -272,10 +272,14 @@
                 var polyline = new naver.maps.Polyline({
                     map: map,
                     path: pathArr,
-                    strokeColor: '#ff0000',
-                    strokeOpacity: 0.5,
-                    strokeWeight: 4
+                    strokeLineCap: 'round',
+                    strokeLineJoin: 'round',
+                    strokeColor: '#0000FF',
+                    strokeStyle: 'shortdot',
+                    strokeWeight: 5,
+                    strokeOpacity : 0.8
                 });
+
             },
             error: function () {
                 alert("통신에 문제가 발생하여 다시 실행합니다!");
