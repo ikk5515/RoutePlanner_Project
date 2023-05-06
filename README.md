@@ -8,7 +8,7 @@
 <li>IntelliJ</li>
 <li>Postman</li>
 <li>Github</li>
-<li>SpringBoot Version : 2.7.6</li>
+<li>SpringBoot Version : 2.7.4</li>
 <li>Oracle Cloud Database 19c</li>
 <h1>사용기술</h1>
 <h3>BackEnd</h3>
