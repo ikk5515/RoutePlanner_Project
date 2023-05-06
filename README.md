@@ -4,7 +4,27 @@
 <hr>
 <h3 tesxt align="center">코드 리팩토링 진행중</h3>
 <hr>
-<br>
+<h1>개발환경</h3>
+<li>IntelliJ</li>
+<li>Postman</li>
+<li>Github</li>
+<li>SpringBoot Version : 2.7.6</li>
+<li>Oracle Cloud Database 19c</li>
+<h1>사용기술</h1>
+<h3>BackEnd</h3>
+<li>Java 11</li>
+<li>Spring Boot</li>
+<li>Spring Boot Security</li>
+<li>Spring Data JPA</li>
+<li>Thymeleaf</li>
+<h3>Build Tool</h3>
+<li>Gradle</li>
+<h3>Database</h3>
+<li>Oracle Cloud Database 19c</li>
+<h3>FrontEnd</h3>
+<li>html</li>
+<li>css</li>
+<li>javascript</li>
 <h1>개요</h1>
 <p>지속되던 코로나-19 바이러스로 인한 일상의 제약이 점차 완화되는 추세 속에서 이전에 영위하지 못하던 개개인의 여가생활을 지원하기 위해 개발하였다. 제약이 완화되면서 많은 사람들이 국내 여행 의사가 점차 증가된다고 분석되며 동시에 우리의 일상 속에는 인간이 직접 의사결정을 하는 부분들이 많이 줄어들었습니다. <br>
 공공데이터를 이용한 자동화된 경로 추천 시스템을 통해 사용자들은 의사결정의 단계 없이 제공되는 경로를 지도 API를 통해 시각적으로 이용하며 나들이 준비 과정을 간소화 시킬 것입니다.</p>
