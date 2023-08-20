@@ -1,9 +1,6 @@
 ![이거완전명함같네](https://user-images.githubusercontent.com/97776614/213250845-57971d6f-ae72-4cf0-ba8b-e647611573ed.png)
 
 <br>
-<hr>
-<h3 tesxt align="center">코드 리팩토링 진행중</h3>
-<hr>
 <h1>개발환경</h3>
 <li>IntelliJ</li>
 <li>Postman</li>
